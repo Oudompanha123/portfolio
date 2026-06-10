@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-Process node -ErrorAction SilentlyContinue | Select-Object Id, StartTime, @{n='CPU\\(s\\)';e={[math]::Round\\($_.CPU,1\\)}} | Format-Table -AutoSize; \"---- next bin ----\"; Test-Path \"c:\\\\Users\\\\ksg-usr\\\\Downloads\\\\portfolio\\\\portfolio\\\\node_modules\\\\.bin\\\\next.cmd\"; \"---- tailwind pkg ----\"; Test-Path \"c:\\\\Users\\\\ksg-usr\\\\Downloads\\\\portfolio\\\\portfolio\\\\node_modules\\\\tailwindcss\\\\package.json\"; \"---- .next exists ----\"; Test-Path \"c:\\\\Users\\\\ksg-usr\\\\Downloads\\\\portfolio\\\\portfolio\\\\.next\")",
+      "PowerShell($env:NODE_ENV=$null; & \"c:\\\\Users\\\\ksg-usr\\\\Downloads\\\\portfolio\\\\portfolio\\\\node_modules\\\\.bin\\\\next.cmd\" build 2>&1 | Select-Object -Last 40)",
+      "PowerShell(Get-CimInstance Win32_Process -Filter \"Name='node.exe'\" | Select-Object ProcessId, @{n='Cmd';e={$_.CommandLine}} | Format-List)"
+    ]
+  }
+}

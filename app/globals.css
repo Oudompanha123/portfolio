@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   Design tokens
+   Light is the default; .dark on <html> swaps the palette.
+   Near-monochrome with a single restrained indigo accent.
+--------------------------------------------------------------------------- */
+:root {
+  --bg: #f5f5fb;
+  --surface: #ffffff;
+  --border: #e9e7f2;
+  --ink: #16162a;
+  --muted: #6b6b7c;
+  --accent: #7c3aed;
+  --accent-2: #c026d3;
+}
+
+.dark {
+  --bg: #0b0b12;
+  --surface: #15151f;
+  --border: #262633;
+  --ink: #f4f4f5;
+  --muted: #9b9ba8;
+  --accent: #a78bfa;
+  --accent-2: #e879f9;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg);
+    background-image: radial-gradient(
+        55rem 38rem at 85% -8%,
+        color-mix(in oklab, var(--accent) 14%, transparent),
+        transparent 60%
+      ),
+      radial-gradient(
+        48rem 38rem at -10% 8%,
+        color-mix(in oklab, var(--accent-2) 10%, transparent),
+        transparent 60%
+      );
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Gradient brand button — used by the nav CTA, hero, and contact form */
+  .btn-gradient {
+    @apply inline-flex items-center justify-center gap-2 font-semibold text-white transition-transform duration-200;
+    background-image: linear-gradient(135deg, var(--accent), var(--accent-2));
+  }
+  .btn-gradient:hover {
+    transform: translateY(-1px);
+  }
+
+  /* Visible, on-brand keyboard focus everywhere */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: #fff;
+  }
+}
+
+@layer components {
+  /* Monospace eyebrow / micro-label — the page's signature device */
+  .label {
+    @apply font-mono text-xs uppercase tracking-label text-muted;
+  }
+
+  .section {
+    @apply mx-auto max-w-content px-6 py-24 sm:px-8 md:py-32;
+  }
+
+  .hairline {
+    @apply border-t border-border;
+  }
+}
+
+/* Scroll-reveal: hidden until the .is-visible class is added by the observer */
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+}
+.reveal.is-visible {
+  animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Honor reduced-motion: show everything immediately, kill smooth scroll */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1;
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
