@@ -14,15 +14,7 @@ const links = [
 ];
 
 export default function Nav() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   // Close the drawer on Escape.
   useEffect(() => {
@@ -45,15 +37,13 @@ export default function Nav() {
   const firstName = profile.name.split(" ")[0];
 
   return (
-    <motion.header
-      initial={{ y: -24, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      className={`sticky top-0 z-50 bg-surface transition-colors duration-300 md:bg-bg/80 md:backdrop-blur-md ${
-        scrolled || open ? "border-b border-border" : "border-b border-transparent"
-      }`}
-    >
-      <nav className="mx-auto flex max-w-content items-center justify-between px-6 py-4 sm:px-8">
+    <header className="relative z-50 border-b border-border bg-surface md:bg-bg/80 md:backdrop-blur-md">
+      <motion.nav
+        initial={{ y: -24, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        className="mx-auto flex max-w-content items-center justify-between px-6 py-4 sm:px-8"
+      >
         <a
           href="#top"
           onClick={() => setOpen(false)}
@@ -131,7 +121,7 @@ export default function Nav() {
             </svg>
           </button>
         </div>
-      </nav>
+      </motion.nav>
 
       {/* Mobile off-canvas drawer (left) */}
       <AnimatePresence>
@@ -226,6 +216,6 @@ export default function Nav() {
           </div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 }
