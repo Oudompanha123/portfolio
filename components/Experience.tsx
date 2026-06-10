@@ -1,8 +1,12 @@
-import { experience, education } from "@/lib/data";
+"use client";
+
+import { useLocale } from "@/lib/i18n";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 
 export default function Experience() {
+  const { t } = useLocale();
+
   return (
     <section id="work" className="section">
       <div className="hairline" />
@@ -10,13 +14,13 @@ export default function Experience() {
         <Reveal>
           <SectionHeading
             index="03"
-            eyebrow="experience"
-            title="Where I've worked"
+            eyebrow={t.experience.eyebrow}
+            title={t.experience.title}
           />
         </Reveal>
 
         <ul className="divide-y divide-border border-y border-border">
-          {experience.map((job, i) => (
+          {t.experience.jobs.map((job, i) => (
             <Reveal key={job.company} delay={i * 60}>
               <li className="grid gap-4 py-8 md:grid-cols-[1fr_auto] md:gap-10">
                 <div className="max-w-2xl">
@@ -46,11 +50,11 @@ export default function Experience() {
         </ul>
 
         <Reveal>
-          <h3 className="label mt-16 mb-6">Education</h3>
+          <h3 className="label mt-16 mb-6">{t.experience.educationTitle}</h3>
         </Reveal>
 
         <ul className="divide-y divide-border border-y border-border">
-          {education.map((item, i) => (
+          {t.experience.education.map((item, i) => (
             <Reveal key={item.credential} delay={i * 60}>
               <li className="grid gap-2 py-6 md:grid-cols-[1fr_auto] md:items-baseline md:gap-x-10">
                 <div className="max-w-2xl">

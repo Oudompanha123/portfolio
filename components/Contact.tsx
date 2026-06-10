@@ -1,13 +1,16 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { profile } from "@/lib/data";
+import { site } from "@/lib/data";
+import { useLocale } from "@/lib/i18n";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
 export default function Contact() {
+  const { t } = useLocale();
+  const c = t.contact;
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string>("");
 
@@ -28,14 +31,14 @@ export default function Contact() {
 
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
-        throw new Error(body.error ?? "Something went wrong. Try again.");
+        throw new Error(body.error ?? c.genericError);
       }
 
       setStatus("success");
       form.reset();
     } catch (err) {
       setStatus("error");
-      setError(err instanceof Error ? err.message : "Something went wrong.");
+      setError(err instanceof Error ? err.message : c.genericError);
     }
   }
 
@@ -47,25 +50,18 @@ export default function Contact() {
       <div className="hairline" />
       <div className="pt-24 md:pt-32">
         <Reveal>
-          <SectionHeading
-            index="04"
-            eyebrow="contact"
-            title="Let's build something"
-          />
+          <SectionHeading index="04" eyebrow={c.eyebrow} title={c.title} />
         </Reveal>
 
         <div className="grid gap-12 md:grid-cols-[1fr_1.2fr] md:gap-16">
           <Reveal>
             <div>
-              <p className="text-lg leading-relaxed text-muted">
-                Have a project in mind, a role to fill, or just want to say
-                hello? Send a note and I&apos;ll reply within a day or two.
-              </p>
+              <p className="text-lg leading-relaxed text-muted">{c.intro}</p>
               <a
-                href={`mailto:${profile.email}`}
+                href={`mailto:${site.email}`}
                 className="mt-6 inline-block font-mono text-sm text-ink transition-colors hover:text-accent"
               >
-                {profile.email}
+                {site.email}
               </a>
             </div>
           </Reveal>
@@ -73,23 +69,21 @@ export default function Contact() {
           <Reveal delay={80}>
             {status === "success" ? (
               <div className="flex h-full flex-col justify-center rounded-md border border-border bg-surface p-8">
-                <p className="label text-accent">Message sent</p>
-                <p className="mt-3 text-lg">
-                  Thanks for reaching out — I&apos;ll be in touch soon.
-                </p>
+                <p className="label text-accent">{c.sent}</p>
+                <p className="mt-3 text-lg">{c.sentBody}</p>
                 <button
                   type="button"
                   onClick={() => setStatus("idle")}
                   className="mt-4 self-start font-mono text-xs uppercase tracking-label text-muted transition-colors hover:text-ink"
                 >
-                  Send another
+                  {c.sendAnother}
                 </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                 <div>
                   <label htmlFor="name" className="label mb-2 block">
-                    Name
+                    {c.nameLabel}
                   </label>
                   <input
                     id="name"
@@ -97,14 +91,14 @@ export default function Contact() {
                     type="text"
                     required
                     autoComplete="name"
-                    placeholder="Ada Lovelace"
+                    placeholder={c.namePlaceholder}
                     className={inputClass}
                   />
                 </div>
 
                 <div>
                   <label htmlFor="email" className="label mb-2 block">
-                    Email
+                    {c.emailLabel}
                   </label>
                   <input
                     id="email"
@@ -112,21 +106,21 @@ export default function Contact() {
                     type="email"
                     required
                     autoComplete="email"
-                    placeholder="ada@example.com"
+                    placeholder={c.emailPlaceholder}
                     className={inputClass}
                   />
                 </div>
 
                 <div>
                   <label htmlFor="message" className="label mb-2 block">
-                    Message
+                    {c.messageLabel}
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     required
                     rows={4}
-                    placeholder="Tell me a little about what you have in mind."
+                    placeholder={c.messagePlaceholder}
                     className={`${inputClass} resize-none`}
                   />
                 </div>
@@ -142,7 +136,7 @@ export default function Contact() {
                   disabled={status === "submitting"}
                   className="btn-gradient rounded-xl px-6 py-3 text-sm disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  {status === "submitting" ? "Sending…" : "Send message"}
+                  {status === "submitting" ? c.submitting : c.submit}
                 </button>
               </form>
             )}

@@ -1,6 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
-import { profile } from "@/lib/data";
+import {
+  Space_Grotesk,
+  Inter,
+  JetBrains_Mono,
+  Noto_Sans_Khmer,
+} from "next/font/google";
+import { site, content } from "@/lib/data";
+import { LocaleProvider } from "@/lib/i18n";
 import "./globals.css";
 
 const display = Space_Grotesk({
@@ -21,12 +27,19 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
+const khmer = Noto_Sans_Khmer({
+  subsets: ["khmer"],
+  variable: "--font-khmer",
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: `${profile.name} — ${profile.role}`,
-  description: profile.tagline,
+  title: `${site.name} — ${content.en.profile.role}`,
+  description: content.en.profile.tagline,
   openGraph: {
-    title: `${profile.name} — ${profile.role}`,
-    description: profile.tagline,
+    title: `${site.name} — ${content.en.profile.role}`,
+    description: content.en.profile.tagline,
     type: "website",
   },
 };
@@ -60,9 +73,9 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body
-        className={`${display.variable} ${sans.variable} ${mono.variable} font-sans`}
+        className={`${display.variable} ${sans.variable} ${mono.variable} ${khmer.variable} font-sans`}
       >
-        {children}
+        <LocaleProvider>{children}</LocaleProvider>
       </body>
     </html>
   );

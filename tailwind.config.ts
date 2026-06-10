@@ -18,9 +18,24 @@ const config: Config = {
         accent: "var(--accent)",
       },
       fontFamily: {
-        display: ["var(--font-display)", "system-ui", "sans-serif"],
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+        display: [
+          "var(--font-display)",
+          "var(--font-khmer)",
+          "system-ui",
+          "sans-serif",
+        ],
+        sans: [
+          "var(--font-sans)",
+          "var(--font-khmer)",
+          "system-ui",
+          "sans-serif",
+        ],
+        mono: [
+          "var(--font-mono)",
+          "var(--font-khmer)",
+          "ui-monospace",
+          "monospace",
+        ],
       },
       maxWidth: {
         content: "64rem", // 1024px reading/layout container

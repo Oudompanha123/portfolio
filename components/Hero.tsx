@@ -1,9 +1,8 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import { profile, stats } from "@/lib/data";
-
-const PHOTO = "/image/Chamreun%20Odompanha.png";
+import { site } from "@/lib/data";
+import { useLocale } from "@/lib/i18n";
 
 const container: Variants = {
   hidden: {},
@@ -22,6 +21,8 @@ const item: Variants = {
 };
 
 export default function Hero() {
+  const { t } = useLocale();
+
   return (
     <section
       id="top"
@@ -30,7 +31,7 @@ export default function Hero() {
       <div className="grid items-center gap-12 md:grid-cols-[1.05fr_0.95fr] md:gap-10">
         {/* Left — intro */}
         <motion.div variants={container} initial="hidden" animate="show">
-          {profile.availableForWork && (
+          {site.availableForWork && (
             <motion.div
               variants={item}
               className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-border bg-surface px-3.5 py-1.5"
@@ -39,28 +40,28 @@ export default function Hero() {
                 <span className="absolute inline-flex h-full w-full animate-pulse-dot rounded-full bg-accent" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
               </span>
-              <span className="label">Available for work</span>
+              <span className="label">{t.hero.available}</span>
             </motion.div>
           )}
 
           <motion.p variants={item} className="text-xl text-muted">
-            Hello, I&apos;m
+            {t.hero.greeting}
           </motion.p>
 
           <motion.h1
             variants={item}
             className="mt-2 font-display text-4xl font-semibold leading-[1.05] tracking-tight text-ink sm:text-6xl md:text-7xl"
           >
-            {profile.name}
+            {site.name}
           </motion.h1>
 
           <motion.p
             variants={item}
             className="mt-6 max-w-lg text-lg leading-relaxed text-muted"
           >
-            I&apos;m a{" "}
-            <span className="font-medium text-accent">{profile.role}</span>.{" "}
-            {profile.tagline}
+            {t.hero.introLead}{" "}
+            <span className="font-medium text-accent">{t.profile.role}</span>.{" "}
+            {t.profile.tagline}
           </motion.p>
 
           <motion.div
@@ -73,7 +74,7 @@ export default function Hero() {
               whileTap={{ scale: 0.97 }}
               className="btn-gradient rounded-xl px-6 py-3 text-sm"
             >
-              Say Hello!
+              {t.hero.sayHello}
             </motion.a>
             <motion.a
               href="#work"
@@ -81,7 +82,7 @@ export default function Hero() {
               whileTap={{ scale: 0.97 }}
               className="group inline-flex items-center gap-2 rounded-xl border border-border bg-surface px-6 py-3 text-sm font-medium text-ink transition-colors hover:border-accent"
             >
-              View work
+              {t.hero.viewWork}
               <span
                 aria-hidden
                 className="transition-transform duration-200 group-hover:translate-x-0.5"
@@ -95,7 +96,7 @@ export default function Hero() {
             variants={item}
             className="mt-12 grid max-w-md grid-cols-3 gap-4 border-t border-border pt-8 sm:gap-6"
           >
-            {stats.map((stat) => (
+            {t.stats.map((stat) => (
               <div key={stat.label}>
                 <dt className="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
                   {stat.value}
@@ -123,8 +124,8 @@ export default function Hero() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={PHOTO}
-              alt={profile.name}
+              src={site.photo}
+              alt={site.name}
               className="aspect-[4/5] w-full object-cover object-top"
             />
           </motion.div>

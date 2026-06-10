@@ -2,18 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { profile } from "@/lib/data";
+import { site } from "@/lib/data";
+import { useLocale } from "@/lib/i18n";
 import ThemeToggle from "./ThemeToggle";
-
-const PHOTO = "/image/Chamreun%20Odompanha.png";
-
-const links = [
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#work", label: "Experience" },
-];
+import LangToggle from "./LangToggle";
 
 export default function Nav() {
+  const { t } = useLocale();
   const [open, setOpen] = useState(false);
 
   // Close the drawer on Escape.
@@ -33,8 +28,14 @@ export default function Nav() {
     };
   }, [open]);
 
+  const links = [
+    { href: "#about", label: t.nav.about },
+    { href: "#skills", label: t.nav.skills },
+    { href: "#work", label: t.nav.experience },
+  ];
+
   // First name only, for a compact wordmark.
-  const firstName = profile.name.split(" ")[0];
+  const firstName = site.name.split(" ")[0];
 
   return (
     <header className="relative z-50 border-b border-border bg-surface md:bg-bg/80 md:backdrop-blur-md">
@@ -52,8 +53,8 @@ export default function Nav() {
           <span className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-violet-600 to-fuchsia-600 ring-2 ring-surface">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={PHOTO}
-              alt={profile.name}
+              src={site.photo}
+              alt={site.name}
               className="h-full w-full object-cover object-top"
             />
           </span>
@@ -76,6 +77,7 @@ export default function Nav() {
               </li>
             ))}
           </ul>
+          <LangToggle />
           <ThemeToggle />
           <motion.a
             href="#contact"
@@ -83,12 +85,13 @@ export default function Nav() {
             whileTap={{ scale: 0.97 }}
             className="btn-gradient rounded-full px-5 py-2.5 text-sm"
           >
-            Contact
+            {t.nav.contact}
           </motion.a>
         </div>
 
         {/* Mobile controls */}
         <div className="flex items-center gap-3 md:hidden">
+          <LangToggle />
           <ThemeToggle />
           <button
             type="button"
@@ -154,8 +157,8 @@ export default function Nav() {
                   <span className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-violet-600 to-fuchsia-600 ring-2 ring-surface">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={PHOTO}
-                      alt={profile.name}
+                      src={site.photo}
+                      alt={site.name}
                       className="h-full w-full object-cover object-top"
                     />
                   </span>
@@ -203,13 +206,13 @@ export default function Nav() {
                   onClick={() => setOpen(false)}
                   className="btn-gradient block rounded-full px-5 py-3 text-center text-sm"
                 >
-                  Contact
+                  {t.nav.contact}
                 </a>
                 <a
-                  href={`mailto:${profile.email}`}
+                  href={`mailto:${site.email}`}
                   className="mt-4 block text-center font-mono text-xs text-muted transition-colors hover:text-accent"
                 >
-                  {profile.email}
+                  {site.email}
                 </a>
               </div>
             </motion.div>

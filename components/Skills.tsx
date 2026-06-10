@@ -1,18 +1,26 @@
-import { skillGroups } from "@/lib/data";
+"use client";
+
+import { useLocale } from "@/lib/i18n";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 
 export default function Skills() {
+  const { t } = useLocale();
+
   return (
     <section id="skills" className="section">
       <div className="hairline" />
       <div className="pt-24 md:pt-32">
         <Reveal>
-          <SectionHeading index="02" eyebrow="skills" title="What I work with" />
+          <SectionHeading
+            index="02"
+            eyebrow={t.skills.eyebrow}
+            title={t.skills.title}
+          />
         </Reveal>
 
         <div className="grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-          {skillGroups.map((group, i) => (
+          {t.skills.groups.map((group, i) => (
             <Reveal key={group.title} delay={i * 80}>
               <div className="h-full rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-accent">
                 <h3 className="label mb-4">{group.title}</h3>

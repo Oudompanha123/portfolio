@@ -1,4 +1,4 @@
-import { profile, socials } from "@/lib/data";
+import { site, socials } from "@/lib/data";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="hairline" />
       <div className="flex flex-col gap-6 pt-8 sm:flex-row sm:items-center sm:justify-between">
         <p className="label">
-          &copy; {year} {profile.name}
+          &copy; {year} {site.name}
         </p>
 
         <ul className="flex flex-wrap gap-x-6 gap-y-2">
