@@ -7,26 +7,64 @@ import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 
 type Status = "idle" | "submitting" | "success" | "error";
+type FieldErrors = { name?: string; email?: string; message?: string };
+
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default function Contact() {
   const { t } = useLocale();
   const c = t.contact;
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string>("");
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
+
+  function validate(values: {
+    name: string;
+    email: string;
+    message: string;
+  }): FieldErrors {
+    const errs: FieldErrors = {};
+    if (!values.name.trim()) errs.name = c.errors.name;
+    if (!values.email.trim()) errs.email = c.errors.email;
+    else if (!emailPattern.test(values.email.trim()))
+      errs.email = c.errors.emailInvalid;
+    if (!values.message.trim()) errs.message = c.errors.message;
+    return errs;
+  }
+
+  function clearFieldError(field: keyof FieldErrors) {
+    setFieldErrors((prev) =>
+      prev[field] ? { ...prev, [field]: undefined } : prev
+    );
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const form = event.currentTarget;
+    const fd = new FormData(form);
+    const values = {
+      name: String(fd.get("name") ?? ""),
+      email: String(fd.get("email") ?? ""),
+      message: String(fd.get("message") ?? ""),
+    };
+
+    // Client-side validation — bail before hitting the network.
+    const errs = validate(values);
+    setFieldErrors(errs);
+    if (Object.keys(errs).length > 0) {
+      const first = form.querySelector<HTMLElement>("[aria-invalid='true']");
+      first?.focus();
+      return;
+    }
+
     setStatus("submitting");
     setError("");
-
-    const form = event.currentTarget;
-    const data = Object.fromEntries(new FormData(form).entries());
 
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(values),
       });
 
       if (!res.ok) {
@@ -43,7 +81,12 @@ export default function Contact() {
   }
 
   const inputClass =
-    "w-full border-b border-border bg-transparent py-3 text-ink placeholder:text-muted/60 transition-colors focus:border-accent focus:outline-none";
+    "w-full border-b bg-transparent py-3 text-ink placeholder:text-muted/60 transition-colors focus:outline-none";
+
+  const fieldClass = (invalid: boolean) =>
+    `${inputClass} ${
+      invalid ? "border-red-500 focus:border-red-500" : "border-border focus:border-accent"
+    }`;
 
   return (
     <section id="contact" className="section">
@@ -92,8 +135,16 @@ export default function Contact() {
                     required
                     autoComplete="name"
                     placeholder={c.namePlaceholder}
-                    className={inputClass}
+                    className={fieldClass(!!fieldErrors.name)}
+                    aria-invalid={!!fieldErrors.name}
+                    aria-describedby={fieldErrors.name ? "name-error" : undefined}
+                    onChange={() => clearFieldError("name")}
                   />
+                  {fieldErrors.name && (
+                    <p id="name-error" className="mt-1.5 text-sm text-red-500">
+                      {fieldErrors.name}
+                    </p>
+                  )}
                 </div>
 
                 <div>
@@ -107,8 +158,18 @@ export default function Contact() {
                     required
                     autoComplete="email"
                     placeholder={c.emailPlaceholder}
-                    className={inputClass}
+                    className={fieldClass(!!fieldErrors.email)}
+                    aria-invalid={!!fieldErrors.email}
+                    aria-describedby={
+                      fieldErrors.email ? "email-error" : undefined
+                    }
+                    onChange={() => clearFieldError("email")}
                   />
+                  {fieldErrors.email && (
+                    <p id="email-error" className="mt-1.5 text-sm text-red-500">
+                      {fieldErrors.email}
+                    </p>
+                  )}
                 </div>
 
                 <div>
@@ -121,12 +182,25 @@ export default function Contact() {
                     required
                     rows={4}
                     placeholder={c.messagePlaceholder}
-                    className={`${inputClass} resize-none`}
+                    className={`${fieldClass(!!fieldErrors.message)} resize-none`}
+                    aria-invalid={!!fieldErrors.message}
+                    aria-describedby={
+                      fieldErrors.message ? "message-error" : undefined
+                    }
+                    onChange={() => clearFieldError("message")}
                   />
+                  {fieldErrors.message && (
+                    <p
+                      id="message-error"
+                      className="mt-1.5 text-sm text-red-500"
+                    >
+                      {fieldErrors.message}
+                    </p>
+                  )}
                 </div>
 
                 {status === "error" && (
-                  <p role="alert" className="text-sm text-accent">
+                  <p role="alert" className="text-sm text-red-500">
                     {error}
                   </p>
                 )}
@@ -134,7 +208,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="btn-gradient rounded-xl px-6 py-3 text-sm disabled:cursor-not-allowed disabled:opacity-50"
+                  className="btn-gradient mx-auto flex w-fit rounded-xl px-6 py-3 text-sm disabled:cursor-not-allowed disabled:opacity-50 md:mx-0"
                 >
                   {status === "submitting" ? c.submitting : c.submit}
                 </button>

@@ -68,21 +68,36 @@ export default function Experience() {
                   {item.period}
                 </span>
 
-                {item.image && (
-                  <figure className="mt-3 w-full overflow-hidden rounded-xl border border-border bg-surface md:col-span-2 md:mt-5">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={item.image}
-                      alt={item.caption ?? item.credential}
-                      className="w-full"
-                    />
-                    {item.caption && (
-                      <figcaption className="px-4 py-3 text-xs leading-relaxed text-muted">
-                        {item.caption}
-                      </figcaption>
-                    )}
-                  </figure>
-                )}
+                {item.image &&
+                  (item.contain ? (
+                    <figure className="mt-4 flex flex-col items-center md:col-span-2 md:mt-6">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={item.image}
+                        alt={item.caption ?? item.credential}
+                        className="w-full max-w-[260px] object-contain"
+                      />
+                      {item.caption && (
+                        <figcaption className="mt-3 text-center text-xs leading-relaxed text-muted">
+                          {item.caption}
+                        </figcaption>
+                      )}
+                    </figure>
+                  ) : (
+                    <figure className="mt-3 w-full overflow-hidden rounded-xl border border-border bg-surface md:col-span-2 md:mt-5">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={item.image}
+                        alt={item.caption ?? item.credential}
+                        className="w-full"
+                      />
+                      {item.caption && (
+                        <figcaption className="px-4 py-3 text-xs leading-relaxed text-muted">
+                          {item.caption}
+                        </figcaption>
+                      )}
+                    </figure>
+                  ))}
               </li>
             </Reveal>
           ))}

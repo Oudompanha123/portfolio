@@ -35,6 +35,7 @@ export type EducationItem = {
   period: string;
   image?: string;
   caption?: string;
+  contain?: boolean; // center & contain the image (for logos) vs full-width
 };
 
 export type Content = {
@@ -73,6 +74,12 @@ export type Content = {
     submit: string;
     submitting: string;
     genericError: string;
+    errors: {
+      name: string;
+      email: string;
+      emailInvalid: string;
+      message: string;
+    };
   };
 };
 
@@ -174,6 +181,8 @@ export const content: Record<Locale, Content> = {
           credential: "Bachelor Degree of Computer Science",
           institution: "Royal University of Phnom Penh",
           period: "2021 — 2024",
+          image: "/image/Rupp.png",
+          contain: true,
         },
       ],
     },
@@ -194,6 +203,12 @@ export const content: Record<Locale, Content> = {
       submit: "Send message",
       submitting: "Sending…",
       genericError: "Something went wrong. Try again.",
+      errors: {
+        name: "Please enter your name.",
+        email: "Please enter your email.",
+        emailInvalid: "That email address doesn't look right.",
+        message: "Please enter a message.",
+      },
     },
   },
 
@@ -294,6 +309,8 @@ export const content: Record<Locale, Content> = {
           credential: "បរិញ្ញាបត្រវិទ្យាសាស្ត្រកុំព្យូទ័រ",
           institution: "សាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ",
           period: "2021 — 2024",
+          image: "/image/Rupp.png",
+          contain: true,
         },
       ],
     },
@@ -314,6 +331,12 @@ export const content: Record<Locale, Content> = {
       submit: "ផ្ញើសារ",
       submitting: "កំពុងផ្ញើ…",
       genericError: "មានបញ្ហាបានកើតឡើង។ សូមព្យាយាមម្ដងទៀត។",
+      errors: {
+        name: "សូមបញ្ចូលឈ្មោះរបស់អ្នក។",
+        email: "សូមបញ្ចូលអ៊ីមែលរបស់អ្នក។",
+        emailInvalid: "អ៊ីមែលនេះមើលទៅមិនត្រឹមត្រូវ។",
+        message: "សូមបញ្ចូលសារ។",
+      },
     },
   },
 };

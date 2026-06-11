@@ -6,12 +6,12 @@ export default function Footer() {
   return (
     <footer className="mx-auto max-w-content px-6 py-12 sm:px-8">
       <div className="hairline" />
-      <div className="flex flex-col gap-6 pt-8 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col items-center gap-6 pt-8 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
         <p className="label">
           &copy; {year} {site.name}
         </p>
 
-        <ul className="flex flex-wrap gap-x-6 gap-y-2">
+        <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 sm:justify-start">
           {socials.map((social) => (
             <li key={social.label}>
               <a
