@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { site } from "@/lib/data";
 import { useLocale } from "@/lib/i18n";
 import ThemeToggle from "./ThemeToggle";
@@ -10,6 +10,19 @@ import LangToggle from "./LangToggle";
 export default function Nav() {
   const { t } = useLocale();
   const [open, setOpen] = useState(false);
+  const reduce = useReducedMotion();
+
+  // Transform-only animations tuned for a smooth, native-feeling drawer.
+  const panelTransition = reduce
+    ? { duration: 0 }
+    : {
+        type: "tween" as const,
+        duration: 0.3,
+        ease: [0.32, 0.72, 0, 1] as [number, number, number, number],
+      };
+  const backdropTransition = reduce
+    ? { duration: 0 }
+    : { duration: 0.25, ease: "linear" as const };
 
   // Close the drawer on Escape.
   useEffect(() => {
@@ -135,8 +148,9 @@ export default function Nav() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              transition={backdropTransition}
               onClick={() => setOpen(false)}
+              style={{ willChange: "opacity" }}
               className="fixed inset-0 z-[55] bg-black/40"
               aria-hidden
             />
@@ -146,10 +160,11 @@ export default function Nav() {
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
-              transition={{ type: "tween", duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              transition={panelTransition}
               role="dialog"
               aria-modal="true"
               aria-label="Navigation menu"
+              style={{ willChange: "transform" }}
               className="fixed inset-y-0 left-0 z-[60] flex w-[82%] max-w-xs flex-col border-r border-border bg-surface shadow-2xl"
             >
               <div className="flex items-center justify-between border-b border-border px-6 py-4">
