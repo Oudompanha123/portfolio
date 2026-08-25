@@ -28,6 +28,11 @@ export default function Experience() {
                     {job.role}
                   </h3>
                   <p className="mt-1 text-muted">{job.company}</p>
+                  {job.description && (
+                    <p className="mt-1 text-sm text-muted/80">
+                      {job.description}
+                    </p>
+                  )}
 
                   <ul className="mt-4 space-y-2">
                     {job.points.map((point) => (

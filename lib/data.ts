@@ -26,6 +26,7 @@ export type SkillGroup = { title: string; items: string[] };
 export type ExperienceItem = {
   role: string;
   company: string;
+  description?: string;
   period: string;
   points: string[];
 };
@@ -86,9 +87,9 @@ export type Content = {
 export const content: Record<Locale, Content> = {
   en: {
     profile: {
-      role: "Full-Stack Web Developer at KOSIGN",
+      role: "Backend Developer (Java) at KOSIGN",
       tagline:
-        "I build full-stack web applications — Spring Boot APIs on the back, Next.js interfaces on the front.",
+        "I build and maintain backend applications and RESTful APIs with Java and Spring (Spring Boot, Spring MVC, Spring Security) — plus the Next.js interfaces they power.",
       location: "Phnom Penh, Cambodia · GMT+7",
     },
     nav: {
@@ -113,9 +114,9 @@ export const content: Record<Locale, Content> = {
       eyebrow: "about",
       title: "A bit about me",
       paragraphs: [
-        "I'm a web developer based in Phnom Penh with a Computer Science degree from the Royal University of Phnom Penh. I work across the full stack and care about clean APIs, responsive interfaces, and code that's easy to maintain.",
-        "At KOSIGN I design RESTful APIs with Spring Boot — handling business logic, JWT/OAuth2 authentication, and database access — and build the matching frontends in Next.js, TypeScript, and Tailwind CSS, wiring the two together end to end.",
-        "I completed the Software Expert Training Program at the Korea Software HRD Center, and I work comfortably in English (advanced) and Khmer (fluent).",
+        "I'm a backend-focused Java developer with 2+ years of hands-on experience building and maintaining backend applications and RESTful APIs using Java and Spring (Spring Boot, Spring MVC, Spring Security). I hold a Computer Science degree from the Royal University of Phnom Penh.",
+        "I'm strong in OOP, relational database design (PostgreSQL, ERD), and JWT-based authentication, and experienced in debugging production systems, cross-team collaboration, and integrating APIs with external and third-party systems.",
+        "At KOSIGN — a company specializing in B2B Fin-Tech, e-Finance, and Global IT Outsourcing — I design microservices with Spring Cloud (Eureka, API Gateway, OpenFeign) and build the matching frontends in Next.js and TypeScript. I completed the Software Expert Training Program at the Korea Software HRD Center, and I work comfortably in English (advanced) and Khmer (fluent).",
       ],
     },
     skills: {
@@ -123,30 +124,51 @@ export const content: Record<Locale, Content> = {
       title: "What I work with",
       groups: [
         {
-          title: "Backend",
+          title: "Java & OOP",
           items: [
-            "Java",
+            "Java (OOP, MVC, JSON)",
             "Spring Boot",
-            "RESTful API",
-            "JWT & OAuth2",
-            "PostgreSQL",
-            "MySQL",
+            "Spring MVC",
+            "Spring Security",
+            "Spring Data JPA",
+            "Hibernate",
           ],
+        },
+        {
+          title: "Microservices",
+          items: [
+            "Eureka Service Discovery",
+            "API Gateway",
+            "Spring Cloud OpenFeign",
+            "Load Balancer",
+          ],
+        },
+        {
+          title: "Database & API Design",
+          items: [
+            "SQL & Relational DB Design",
+            "PostgreSQL",
+            "RESTful API Design",
+            "JWT & OAuth2",
+            "RBAC",
+            "Third-Party API Integration",
+          ],
+        },
+        {
+          title: "DevOps & Tools",
+          items: ["Git", "GitLab", "Docker", "Postman", "Swagger / OpenAPI"],
         },
         {
           title: "Frontend",
           items: [
-            "TypeScript",
+            "HTML5 & CSS3",
+            "Tailwind CSS",
             "JavaScript",
+            "jQuery",
+            "TypeScript",
             "Next.js",
             "React.js",
-            "Tailwind CSS",
-            "HTML & CSS",
           ],
-        },
-        {
-          title: "Tools & Practices",
-          items: ["Git", "GitLab", "Docker", "Postman", "Full-Stack Development"],
         },
       ],
     },
@@ -158,17 +180,28 @@ export const content: Record<Locale, Content> = {
         {
           role: "Web Developer",
           company: "KOSIGN (Cambodia) Investment Co., Ltd.",
+          description:
+            "The company specializes in B2B Fin-Tech, e-Finance, and Global IT Outsourcing.",
           period: "Aug 2024 — Present",
           points: [
-            "Developed robust RESTful APIs using Spring Boot for business logic, authentication (JWT, OAuth2), and database interaction.",
-            "Built responsive, user-friendly web interfaces with Next.js, TypeScript, and Tailwind CSS.",
-            "Integrated frontend and backend services, ensuring seamless data flow and performance.",
-            "Collaborated with the team to design, develop, test, and deploy full-stack web applications.",
-            "Maintained code quality and version control with GitLab, and tested APIs using Postman.",
+            "Developed backend applications and RESTful APIs using Spring Boot and Spring Data JPA for data access, implementing JWT authentication and role-based authorization (RBAC), integrated with PostgreSQL.",
+            "Designed and implemented backend services using a microservices architecture (Spring Cloud, Eureka Service Discovery, API Gateway) to support integration with third-party systems.",
+            "Applied client-side load balancing with Spring Cloud LoadBalancer and inter-service communication with Spring Cloud OpenFeign.",
+            "Collaborated with cross-functional teams to design solutions and integrate REST APIs between frontend and backend services.",
+            "Built responsive front-end interfaces using Next.js, TypeScript, HTML5, CSS3, and Tailwind CSS.",
+            "Containerized applications with Docker, and used Git and GitLab for version control and CI/CD coordination.",
+            "Performed API testing with Postman and maintained code quality throughout the development lifecycle.",
           ],
         },
       ],
       education: [
+        {
+          credential: "Bachelor Degree of Computer Science",
+          institution: "Royal University of Phnom Penh",
+          period: "2021 — 2024",
+          image: "/image/Rupp.png",
+          contain: true,
+        },
         {
           credential: "Software Expert Training Program",
           institution: "Korea Software HRD Center",
@@ -176,13 +209,6 @@ export const content: Record<Locale, Content> = {
           image: "/image/HRD-Award.png",
           caption:
             "Top Team Award — 12th Basic Training Course, Korea Software HRD Center (2024)",
-        },
-        {
-          credential: "Bachelor Degree of Computer Science",
-          institution: "Royal University of Phnom Penh",
-          period: "2021 — 2024",
-          image: "/image/Rupp.png",
-          contain: true,
         },
       ],
     },
@@ -214,9 +240,9 @@ export const content: Record<Locale, Content> = {
 
   km: {
     profile: {
-      role: "អ្នកអភិវឌ្ឍគេហទំព័រ Full-Stack នៅ KOSIGN",
+      role: "អ្នកអភិវឌ្ឍ Backend (Java) នៅ KOSIGN",
       tagline:
-        "ខ្ញុំបង្កើតកម្មវិធីគេហទំព័រ Full-Stack — API ដោយ Spring Boot នៅខាងក្រោយ និងផ្ទៃប្រើប្រាស់ Next.js នៅខាងមុខ។",
+        "ខ្ញុំបង្កើត និងថែទាំកម្មវិធី Backend និង RESTful API ដោយ Java និង Spring (Spring Boot, Spring MVC, Spring Security) — ព្រមទាំងផ្ទៃប្រើប្រាស់ Next.js ដែលភ្ជាប់ជាមួយ។",
       location: "ភ្នំពេញ ប្រទេសកម្ពុជា · GMT+7",
     },
     nav: {
@@ -241,9 +267,9 @@ export const content: Record<Locale, Content> = {
       eyebrow: "អំពី",
       title: "ខ្លះៗអំពីខ្ញុំ",
       paragraphs: [
-        "ខ្ញុំជាអ្នកអភិវឌ្ឍគេហទំព័រនៅទីក្រុងភ្នំពេញ ដែលបានបញ្ចប់ថ្នាក់បរិញ្ញាបត្រវិទ្យាសាស្ត្រកុំព្យូទ័រ ពីសាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ។ ខ្ញុំធ្វើការគ្រប់ផ្នែកនៃ full stack ហើយយកចិត្តទុកដាក់លើ API ស្អាត ផ្ទៃប្រើប្រាស់ឆ្លើយតបបានល្អ និងកូដដែលងាយស្រួលថែទាំ។",
-        "នៅ KOSIGN ខ្ញុំរចនា RESTful API ដោយ Spring Boot — គ្រប់គ្រងតក្កៈអាជីវកម្ម ការផ្ទៀងផ្ទាត់ JWT/OAuth2 និងការចូលប្រើមូលដ្ឋានទិន្នន័យ — ហើយបង្កើតផ្ទៃខាងមុខដែលត្រូវគ្នាដោយ Next.js, TypeScript និង Tailwind CSS ភ្ជាប់ទាំងពីរចូលគ្នាពីដើមដល់ចប់។",
-        "ខ្ញុំបានបញ្ចប់កម្មវិធីបណ្ដុះបណ្ដាលអ្នកជំនាញ Software នៅ Korea Software HRD Center ហើយខ្ញុំអាចប្រើភាសាអង់គ្លេស (កម្រិតខ្ពស់) និងភាសាខ្មែរ (ស្ទាត់ជំនាញ)។",
+        "ខ្ញុំជាអ្នកអភិវឌ្ឍ Java ដែលផ្ដោតលើ Backend មានបទពិសោធន៍ជាក់ស្ដែងជាង 2 ឆ្នាំ ក្នុងការបង្កើត និងថែទាំកម្មវិធី Backend និង RESTful API ដោយប្រើ Java និង Spring (Spring Boot, Spring MVC, Spring Security)។ ខ្ញុំបានបញ្ចប់ថ្នាក់បរិញ្ញាបត្រវិទ្យាសាស្ត្រកុំព្យូទ័រ ពីសាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ។",
+        "ខ្ញុំមានចំណេះដឹងរឹងមាំលើ OOP ការរចនាមូលដ្ឋានទិន្នន័យ Relational (PostgreSQL, ERD) និងការផ្ទៀងផ្ទាត់ដោយ JWT ព្រមទាំងមានបទពិសោធន៍ក្នុងការតាមដានកំហុសលើប្រព័ន្ធផលិតកម្ម ការសហការជាមួយក្រុមផ្សេងៗ និងការភ្ជាប់ API ជាមួយប្រព័ន្ធខាងក្រៅ ឬភាគីទីបី។",
+        "នៅ KOSIGN — ក្រុមហ៊ុនឯកទេសខាង B2B Fin-Tech, e-Finance និង Global IT Outsourcing — ខ្ញុំរចនា microservices ដោយ Spring Cloud (Eureka, API Gateway, OpenFeign) និងបង្កើតផ្ទៃខាងមុខដែលត្រូវគ្នាដោយ Next.js និង TypeScript។ ខ្ញុំបានបញ្ចប់កម្មវិធីបណ្ដុះបណ្ដាលអ្នកជំនាញ Software នៅ Korea Software HRD Center ហើយខ្ញុំអាចប្រើភាសាអង់គ្លេស (កម្រិតខ្ពស់) និងភាសាខ្មែរ (ស្ទាត់ជំនាញ)។",
       ],
     },
     skills: {
@@ -251,30 +277,51 @@ export const content: Record<Locale, Content> = {
       title: "អ្វីដែលខ្ញុំប្រើប្រាស់",
       groups: [
         {
-          title: "ផ្នែកខាងក្រោយ (Backend)",
+          title: "Java & OOP",
           items: [
-            "Java",
+            "Java (OOP, MVC, JSON)",
             "Spring Boot",
-            "RESTful API",
-            "JWT & OAuth2",
-            "PostgreSQL",
-            "MySQL",
+            "Spring MVC",
+            "Spring Security",
+            "Spring Data JPA",
+            "Hibernate",
           ],
+        },
+        {
+          title: "Microservices",
+          items: [
+            "Eureka Service Discovery",
+            "API Gateway",
+            "Spring Cloud OpenFeign",
+            "Load Balancer",
+          ],
+        },
+        {
+          title: "រចនាមូលដ្ឋានទិន្នន័យ & API",
+          items: [
+            "SQL & Relational DB Design",
+            "PostgreSQL",
+            "RESTful API Design",
+            "JWT & OAuth2",
+            "RBAC",
+            "Third-Party API Integration",
+          ],
+        },
+        {
+          title: "DevOps & ឧបករណ៍",
+          items: ["Git", "GitLab", "Docker", "Postman", "Swagger / OpenAPI"],
         },
         {
           title: "ផ្នែកខាងមុខ (Frontend)",
           items: [
-            "TypeScript",
+            "HTML5 & CSS3",
+            "Tailwind CSS",
             "JavaScript",
+            "jQuery",
+            "TypeScript",
             "Next.js",
             "React.js",
-            "Tailwind CSS",
-            "HTML & CSS",
           ],
-        },
-        {
-          title: "ឧបករណ៍ និងការអនុវត្ត",
-          items: ["Git", "GitLab", "Docker", "Postman", "Full-Stack Development"],
         },
       ],
     },
@@ -286,17 +333,28 @@ export const content: Record<Locale, Content> = {
         {
           role: "អ្នកអភិវឌ្ឍគេហទំព័រ",
           company: "KOSIGN (Cambodia) Investment Co., Ltd.",
+          description:
+            "ក្រុមហ៊ុននេះមានឯកទេសខាង B2B Fin-Tech, e-Finance និង Global IT Outsourcing។",
           period: "សីហា 2024 — បច្ចុប្បន្ន",
           points: [
-            "បានបង្កើត RESTful API ដ៏រឹងមាំដោយ Spring Boot សម្រាប់តក្កៈអាជីវកម្ម ការផ្ទៀងផ្ទាត់ (JWT, OAuth2) និងការទំនាក់ទំនងជាមួយមូលដ្ឋានទិន្នន័យ។",
-            "បានបង្កើតផ្ទៃប្រើប្រាស់គេហទំព័រឆ្លើយតប និងងាយស្រួលប្រើ ដោយ Next.js, TypeScript និង Tailwind CSS។",
-            "បានភ្ជាប់សេវាផ្នែកខាងមុខ និងខាងក្រោយ ដើម្បីធានាលំហូរទិន្នន័យរលូន និងដំណើរការល្អ។",
-            "បានសហការជាមួយក្រុមការងារ ដើម្បីរចនា អភិវឌ្ឍ សាកល្បង និងដាក់ឱ្យដំណើរការកម្មវិធីគេហទំព័រ full-stack។",
-            "បានរក្សាគុណភាពកូដ និងគ្រប់គ្រងកំណែដោយ GitLab ព្រមទាំងសាកល្បង API ដោយ Postman។",
+            "បានបង្កើតកម្មវិធី Backend និង RESTful API ដោយ Spring Boot និង Spring Data JPA សម្រាប់ចូលប្រើទិន្នន័យ ព្រមទាំងអនុវត្តការផ្ទៀងផ្ទាត់ JWT និងការអនុញ្ញាតតាមតួនាទី (RBAC) ភ្ជាប់ជាមួយ PostgreSQL។",
+            "បានរចនា និងអនុវត្តសេវា Backend ដោយប្រើស្ថាបត្យកម្ម microservices (Spring Cloud, Eureka Service Discovery, API Gateway) ដើម្បីគាំទ្រការភ្ជាប់ជាមួយប្រព័ន្ធភាគីទីបី។",
+            "បានអនុវត្ត client-side load balancing ដោយ Spring Cloud LoadBalancer និងការទំនាក់ទំនងរវាងសេវាដោយ Spring Cloud OpenFeign។",
+            "បានសហការជាមួយក្រុមការងារឆ្លងផ្នែក ដើម្បីរចនាដំណោះស្រាយ និងភ្ជាប់ REST API រវាងផ្នែកខាងមុខ និងខាងក្រោយ។",
+            "បានបង្កើតផ្ទៃខាងមុខឆ្លើយតបដោយ Next.js, TypeScript, HTML5, CSS3 និង Tailwind CSS។",
+            "បានប្រើ Docker សម្រាប់ Containerize កម្មវិធី ព្រមទាំងប្រើ Git និង GitLab សម្រាប់គ្រប់គ្រងកំណែ និង CI/CD។",
+            "បានធ្វើតេស្ត API ដោយ Postman ព្រមទាំងរក្សាគុណភាពកូដពេញមួយវដ្តនៃការអភិវឌ្ឍ។",
           ],
         },
       ],
       education: [
+        {
+          credential: "បរិញ្ញាបត្រវិទ្យាសាស្ត្រកុំព្យូទ័រ",
+          institution: "សាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ",
+          period: "2021 — 2024",
+          image: "/image/Rupp.png",
+          contain: true,
+        },
         {
           credential: "កម្មវិធីបណ្ដុះបណ្ដាលអ្នកជំនាញ Software",
           institution: "Korea Software HRD Center",
@@ -304,13 +362,6 @@ export const content: Record<Locale, Content> = {
           image: "/image/HRD-Award.png",
           caption:
             "ពានរង្វាន់ក្រុមឆ្នើម — វគ្គបណ្ដុះបណ្ដាលមូលដ្ឋានលើកទី១២ Korea Software HRD Center (2024)",
-        },
-        {
-          credential: "បរិញ្ញាបត្រវិទ្យាសាស្ត្រកុំព្យូទ័រ",
-          institution: "សាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ",
-          period: "2021 — 2024",
-          image: "/image/Rupp.png",
-          contain: true,
         },
       ],
     },
