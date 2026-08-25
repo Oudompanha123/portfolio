@@ -17,8 +17,8 @@ export default function LangToggle() {
       >
         EN
       </button>
-      <span className="text-border" aria-hidden>
-        /
+      <span className="text-muted" aria-hidden="true">
+        |
       </span>
       <button
         type="button"
