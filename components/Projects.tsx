@@ -47,8 +47,8 @@ export default function Projects() {
       <div className="mx-auto mt-10 grid max-w-[1080px] gap-6 md:grid-cols-3">
         {projects.map((project, index) => (
           <Reveal key={project.title} delay={index * 80}>
-            <article className="group flex h-full flex-col rounded-[1.4rem] border border-[#dfe3eb] bg-[#f3f4f7] p-5 shadow-[0_1px_0_rgba(17,24,39,0.02)] transition-all duration-200 hover:-translate-y-1 hover:border-[#bec9ea] hover:shadow-[0_10px_24px_rgba(15,23,42,0.06)] dark:border-[#2d3748] dark:bg-[#121821]/80 dark:hover:border-[#4f46e5]/40">
-              <h3 className="relative z-10 mb-3 text-xl font-bold text-gray-800">
+            <article className="group flex h-full flex-col rounded-[1.4rem] border border-[#172033] bg-[#08121a] p-6 shadow-[0_8px_30px_rgba(2,6,23,0.6)] transition-all duration-200 hover:-translate-y-1 hover:border-[#2b3b51]">
+              <h3 className="relative z-10 mb-3 text-xl font-semibold text-gray-100/95">
                 {project.title.split("\n").map((line) => (
                   <span key={line} className="block">
                     {line}
@@ -56,7 +56,7 @@ export default function Projects() {
                 ))}
               </h3>
 
-              <p className="mt-4 flex-1 text-[0.96rem] leading-[1.7] text-muted">
+              <p className="mt-4 flex-1 text-[0.96rem] leading-[1.7] text-gray-300">
                 {project.description}
               </p>
 
@@ -64,19 +64,19 @@ export default function Projects() {
                 {project.stack.map((item) => (
                   <span
                     key={item}
-                    className="inline-flex items-center rounded-full border border-[#d7def8] bg-[#e8edff] px-2.5 py-1 text-xs font-medium text-[#3f5bd1] dark:border-[#4f46e5]/50 dark:bg-[#1e293b] dark:text-[#c7d2fe]"
+                    className="inline-flex items-center rounded-full border border-[#223144] bg-[#0c1621] px-2.5 py-1 text-xs font-medium text-[#cbd5ff]"
                   >
                     {item}
                   </span>
                 ))}
               </div>
 
-              <div className="mt-6 flex items-center gap-5 border-t border-[#dfe3eb] pt-4 text-sm font-medium text-ink dark:border-[#2d3748]">
+              <div className="mt-6 flex items-center gap-5 border-t border-[#16202b] pt-4 text-sm font-medium text-gray-300">
                 <a
                   href="https://github.com/Oudompanha123"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-ink transition-colors hover:text-accent"
+                  className="inline-flex items-center gap-2 text-gray-200 transition-colors hover:text-white"
                 >
                   <GitHubIcon />
                   <span>{t.projects.githubLabel}</span>
@@ -84,7 +84,7 @@ export default function Projects() {
 
                 <a
                   href="#contact"
-                  className="inline-flex items-center gap-2 text-ink transition-colors hover:text-accent"
+                  className="inline-flex items-center gap-2 text-gray-200 transition-colors hover:text-white"
                 >
                   <ExternalLinkIcon />
                   <span>{t.projects.demoLabel}</span>
@@ -100,10 +100,10 @@ export default function Projects() {
           href="https://github.com/Oudompanha123"
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-2 px-8 py-3 border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:border-blue-500 hover:text-blue-600 transition-all duration-300"
+          className="inline-flex items-center gap-3 px-8 py-3 rounded-lg border border-[#2a3646] text-gray-200 bg-transparent text-sm font-medium hover:bg-[#091827] transition-colors duration-200"
         >
           <GitHubIcon />
-          <span>{t.projects.viewAll}</span>
+          <span className="opacity-90">{t.projects.viewAll}</span>
         </a>
       </div>
     </section>
