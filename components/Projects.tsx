@@ -32,7 +32,7 @@ export default function Projects() {
   return (
     <section className="mx-auto max-w-content px-6 pb-10 pt-20 sm:px-8 md:pt-28">
       <div className="mb-6 flex items-center justify-center gap-4 md:mb-8">
-        <span className="block h-9 w-1 rounded bg-[#2a2e3a] dark:bg-[#e5e7eb]" />
+        <span className="block h-9 w-1 rounded bg-accent" />
         <h2 className="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
           {t.projects.heading}
         </h2>
@@ -47,8 +47,8 @@ export default function Projects() {
       <div className="mx-auto mt-10 grid max-w-[1080px] gap-6 md:grid-cols-3">
         {projects.map((project, index) => (
           <Reveal key={project.title} delay={index * 80}>
-            <article className="group flex h-full flex-col rounded-[1.4rem] border border-[#172033] bg-[#08121a] p-6 shadow-[0_8px_30px_rgba(2,6,23,0.6)] transition-all duration-200 hover:-translate-y-1 hover:border-[#2b3b51]">
-              <h3 className="relative z-10 mb-3 text-xl font-semibold text-gray-100/95">
+            <article className="group flex h-full flex-col rounded-[1.4rem] border border-border bg-surface p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-accent">
+              <h3 className="relative z-10 mb-3 text-xl font-semibold text-ink">
                 {project.title.split("\n").map((line) => (
                   <span key={line} className="block">
                     {line}
@@ -56,7 +56,7 @@ export default function Projects() {
                 ))}
               </h3>
 
-              <p className="mt-4 flex-1 text-[0.96rem] leading-[1.7] text-gray-300">
+              <p className="mt-4 flex-1 text-[0.96rem] leading-[1.7] text-muted">
                 {project.description}
               </p>
 
@@ -64,19 +64,19 @@ export default function Projects() {
                 {project.stack.map((item) => (
                   <span
                     key={item}
-                    className="inline-flex items-center rounded-full border border-[#223144] bg-[#0c1621] px-2.5 py-1 text-xs font-medium text-[#cbd5ff]"
+                    className="inline-flex items-center rounded-full border border-border bg-bg px-2.5 py-1 text-xs font-medium text-ink"
                   >
                     {item}
                   </span>
                 ))}
               </div>
 
-              <div className="mt-6 flex items-center gap-5 border-t border-[#16202b] pt-4 text-sm font-medium text-gray-300">
+              <div className="mt-6 flex items-center gap-5 border-t border-border pt-4 text-sm font-medium text-muted">
                 <a
                   href="https://github.com/Oudompanha123"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-gray-200 transition-colors hover:text-white"
+                  className="inline-flex items-center gap-2 transition-colors hover:text-ink"
                 >
                   <GitHubIcon />
                   <span>{t.projects.githubLabel}</span>
@@ -84,7 +84,7 @@ export default function Projects() {
 
                 <a
                   href="#contact"
-                  className="inline-flex items-center gap-2 text-gray-200 transition-colors hover:text-white"
+                  className="inline-flex items-center gap-2 transition-colors hover:text-ink"
                 >
                   <ExternalLinkIcon />
                   <span>{t.projects.demoLabel}</span>
@@ -100,10 +100,10 @@ export default function Projects() {
           href="https://github.com/Oudompanha123"
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-3 px-8 py-3 rounded-lg border border-[#2a3646] text-gray-200 bg-transparent text-sm font-medium hover:bg-[#091827] transition-colors duration-200"
+          className="inline-flex items-center gap-3 rounded-lg border border-border bg-surface px-8 py-3 text-sm font-medium text-ink transition-colors duration-200 hover:border-accent"
         >
           <GitHubIcon />
-          <span className="opacity-90">{t.projects.viewAll}</span>
+          <span>{t.projects.viewAll}</span>
         </a>
       </div>
     </section>
