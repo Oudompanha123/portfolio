@@ -307,8 +307,8 @@ export const content: Record<Locale, Content> = {
       title: "ខ្លះៗអំពីខ្ញុំ",
       paragraphs: [
         "ខ្ញុំជាអ្នកអភិវឌ្ឍ Full Stack ដែលមានបទពិសោធន៍ជាក់ស្តែងជាង 2 ឆ្នាំ ក្នុងការបង្កើត និងថែទាំកម្មវិធីគេហទំព័រ RESTful API និងដំណោះស្រាយដែលផ្អែកលើទិន្នន័យ ដោយប្រើ Java, Spring Boot, Next.js, TypeScript និងឧបករណ៍ Frontend ស្តង់ដារ។",
-        "ខ្ញុំបានបញ្ចប់ថ្នាក់បរិញ្ញាបត្រវិទ្យាសាស្ត្រកុំព្យូទ័រ ពីសាកលវិទ្យាល័យភូមិន្ទភ Cambodia និងបានចូលរួមក្នុងកម្មវិធីបណ្ដុះបណ្ដាល Software Expert Training Program នៅ Korea Software HRD Center។ ខ្ញុំផ្តោតលើស្ថាបត្យកម្មកូដដែលបានរចនាយ៉ាងស្អាត, Backend ដែលអាចធ្វើមាត្រដ្ឋានបាន, និងផ្ទៃប្រើប្រាស់ដែលងាយស្រួលសម្រាប់អ្នកប្រើ។",
-        "នៅ KOSIGN ខ្ញុំរចនា និងអភិវឌ្ឍលក្ខណៈពិសេស Full Stack សម្រាប់ប្រព័ន្ធ B2B Fin-Tech និង e-Finance, ភ្ជាប់សេវាកម្ម Backend ជាមួយ PostgreSQL, JWT, និង API ភាគីទីបី ខណៈពេលដែលផ្តល់នូវផ្ទៃ front-end ที่ឆ្លើយតបលើ React និង Next.js។ ខ្ញុំមានទំនុកចិត្តក្នុងការដំណើរការនៅក្នុងភាសាអង់គ្លេស និងខ្មែរ ហើយមានការស្រលាញ់ក្នុងការដោះស្រាយបញ្ហាលើបច្ចេកវិទ្យា ដោយទំនាក់ទំនង និងសហការដែលល្អ។",
+        "ខ្ញុំបានបញ្ចប់ថ្នាក់បរិញ្ញាបត្រវិទ្យាសាស្ត្រកុំព្យូទ័រ ពីសាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ និងបានចូលរួមក្នុងកម្មវិធីបណ្ដុះបណ្ដាល Software Expert Training Program នៅ Korea Software HRD Center។ ខ្ញុំផ្តោតលើស្ថាបត្យកម្មកូដដែលបានរចនាយ៉ាងស្អាត, Backend ដែលអាចធ្វើមាត្រដ្ឋានបាន, និងផ្ទៃប្រើប្រាស់ដែលងាយស្រួលសម្រាប់អ្នកប្រើ។",
+        "នៅ KOSIGN ខ្ញុំរចនា និងអភិវឌ្ឍលក្ខណៈពិសេស Full Stack សម្រាប់ប្រព័ន្ធ B2B Fin-Tech និង e-Finance, ភ្ជាប់សេវាកម្ម Backend ជាមួយ PostgreSQL, JWT, និង API ភាគីទីបី ខណៈពេលដែលផ្តល់នូវផ្ទៃ front-end ដែលឆ្លើយតបលើ React និង Next.js។ ខ្ញុំមានទំនុកចិត្តក្នុងការដំណើរការនៅក្នុងភាសាអង់គ្លេស និងខ្មែរ ហើយមានការស្រលាញ់ក្នុងការដោះស្រាយបញ្ហាលើបច្ចេកវិទ្យា ដោយទំនាក់ទំនង និងសហការដែលល្អ។",
       ],
     },
     skills: {
@@ -332,8 +332,9 @@ export const content: Record<Locale, Content> = {
           items: [
             "Java 17-21",
             "Spring Boot",
-            "Spring MVC",
             "Spring Security",
+            "RBAC",
+            "JWT & OAuth2",
             "Spring Data JPA",
             "Hibernate",
           ],
@@ -344,10 +345,8 @@ export const content: Record<Locale, Content> = {
             "SQL",
             "MySQL",
             "PostgreSQL",
-            "RESTful API Design",
-            "SOAP API",
-            "JWT & OAuth2",
-            "RBAC",
+            "ERD Design",
+            "RESTful & SOAP API Design",
           ],
         },
         {
@@ -361,7 +360,7 @@ export const content: Record<Locale, Content> = {
         },
         {
           title: "DevOps & Tools",
-          items: ["Git", "GitLab", "Docker", "Postman", "Swagger / OpenAPI"],
+          items: ["Git", "Docker", "Postman", "Swagger / OpenAPI", "AWS", "Jira", "Confluence"],
         },
       ],
     },
