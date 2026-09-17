@@ -46,9 +46,17 @@ export default function Experience() {
                   </ul>
                 </div>
 
-                <span className="label shrink-0 md:text-right">
-                  {job.period}
-                </span>
+                <div className="flex flex-col items-start gap-4 md:w-[260px]">
+                  <span className="label shrink-0">{job.period}</span>
+                  {job.logo && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={job.logo}
+                      alt={job.company}
+                      className="w-full max-w-[260px] self-center object-contain"
+                    />
+                  )}
+                </div>
               </li>
             </Reveal>
           ))}

@@ -27,6 +27,7 @@ export type ExperienceItem = {
   role: string;
   company: string;
   description?: string;
+  logo?: string;
   period: string;
   points: string[];
 };
@@ -222,6 +223,7 @@ export const content: Record<Locale, Content> = {
           company: "KOSIGN (Cambodia) Investment Co., Ltd.",
           description:
             "The company specializes in B2B Fin-Tech, e-Finance, and Global IT Outsourcing.",
+          logo: "/image/KOSIGN-removebg-preview.png",
           period: "Aug 2024 — Present",
           points: [
             "Developed backend applications and RESTful APIs with Spring Boot and Spring Data JPA for efficient data access, JWT authentication, and role-based authorization integrated with PostgreSQL.",
@@ -402,6 +404,7 @@ export const content: Record<Locale, Content> = {
           company: "KOSIGN (Cambodia) Investment Co., Ltd.",
           description:
             "ក្រុមហ៊ុននេះមានឯកទេសខាង B2B Fin-Tech, e-Finance និង Global IT Outsourcing។",
+          logo: "/image/KOSIGN-removebg-preview.png",
           period: "សីហា 2024 — បច្ចុប្បន្ន",
           points: [
             "បានបង្កើតកម្មវិធី Backend និង RESTful API ដោយ Spring Boot និង Spring Data JPA សម្រាប់ដំណើរការទិន្នន័យ, JWT authentication, និង role-based authorization ដែលភ្ជាប់ជាមួយ PostgreSQL។",
