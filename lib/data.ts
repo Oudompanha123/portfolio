@@ -240,7 +240,7 @@ export const content: Record<Locale, Content> = {
           title: "Coc Docs Platform (CDP)",
           description:
             "A personal side project — one workspace for every product's documentation. Tracks what's written, what's missing, and who's behind it across every product a team ships, with per-product knowledge bases, content-status tracking, and team role management.",
-          stack: ["Next.js", "Spring Boot", "TypeScript", "Tailwind CSS"],
+          stack: ["Next.js", "Spring Boot", "PostgreSQL", "TypeScript", "Tailwind CSS"],
           demoUrl: "https://docs.lovedev.me/overview",
           websiteUrl: "https://docs.lovedev.me",
           githubUrl: null,
@@ -441,7 +441,7 @@ export const content: Record<Locale, Content> = {
           title: "Coc Docs Platform (CDP)",
           description:
             "គម្រោងផ្ទាល់ខ្លួន — កន្លែងធ្វើការតែមួយសម្រាប់ឯកសារផលិតផលទាំងអស់។ តាមដានអ្វីដែលបានសរសេរ អ្វីដែលខ្វះ និងអ្នកទទួលខុសត្រូវ លើផលិតផលនីមួយៗ ដោយមានមូលដ្ឋានចំណេះដឹងសម្រាប់ផលិតផលនីមួយៗ ការតាមដានស្ថានភាពមាតិកា និងការគ្រប់គ្រងតួនាទីក្រុម។",
-          stack: ["Next.js", "Spring Boot", "TypeScript", "Tailwind CSS"],
+          stack: ["Next.js", "Spring Boot", "PostgreSQL", "TypeScript", "Tailwind CSS"],
           demoUrl: "https://docs.lovedev.me/overview",
           websiteUrl: "https://docs.lovedev.me",
           githubUrl: null,
