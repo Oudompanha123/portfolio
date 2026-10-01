@@ -67,6 +67,7 @@ export type Content = {
     viewAll: string;
     githubLabel: string;
     demoLabel: string;
+    websiteLabel: string;
     items: {
       title: string;
       description: string;
@@ -75,6 +76,8 @@ export type Content = {
       demoUrl?: string;
       /** Overrides the default GitHub profile link; pass null to hide the GitHub button entirely. */
       githubUrl?: string | null;
+      /** Shows an extra "Website" link with a globe icon when set. */
+      websiteUrl?: string;
     }[];
   };
   spotlight: {
@@ -213,6 +216,7 @@ export const content: Record<Locale, Content> = {
       viewAll: "View All Projects on GitHub",
       githubLabel: "GitHub",
       demoLabel: "Live Demo",
+      websiteLabel: "Website",
       items: [
         {
           title: "E-Commerce Platform",
@@ -236,8 +240,9 @@ export const content: Record<Locale, Content> = {
           title: "Coc Docs Platform (CDP)",
           description:
             "A personal side project — one workspace for every product's documentation. Tracks what's written, what's missing, and who's behind it across every product a team ships, with per-product knowledge bases, content-status tracking, and team role management.",
-          stack: ["Next.js", "TypeScript", "Tailwind CSS"],
+          stack: ["Next.js", "Spring Boot", "TypeScript", "Tailwind CSS"],
           demoUrl: "https://docs.lovedev.me/overview",
+          websiteUrl: "https://docs.lovedev.me",
           githubUrl: null,
         },
       ],
@@ -412,6 +417,7 @@ export const content: Record<Locale, Content> = {
       viewAll: "មើលគម្រោងទាំងអស់នៅលើ GitHub",
       githubLabel: "GitHub",
       demoLabel: "សាកល្បង Live",
+      websiteLabel: "វេបសាយ",
       items: [
         {
           title: "ប្រព័ន្ធអេឡិចត្រូនិកផ្សារ",
@@ -435,8 +441,9 @@ export const content: Record<Locale, Content> = {
           title: "Coc Docs Platform (CDP)",
           description:
             "គម្រោងផ្ទាល់ខ្លួន — កន្លែងធ្វើការតែមួយសម្រាប់ឯកសារផលិតផលទាំងអស់។ តាមដានអ្វីដែលបានសរសេរ អ្វីដែលខ្វះ និងអ្នកទទួលខុសត្រូវ លើផលិតផលនីមួយៗ ដោយមានមូលដ្ឋានចំណេះដឹងសម្រាប់ផលិតផលនីមួយៗ ការតាមដានស្ថានភាពមាតិកា និងការគ្រប់គ្រងតួនាទីក្រុម។",
-          stack: ["Next.js", "TypeScript", "Tailwind CSS"],
+          stack: ["Next.js", "Spring Boot", "TypeScript", "Tailwind CSS"],
           demoUrl: "https://docs.lovedev.me/overview",
+          websiteUrl: "https://docs.lovedev.me",
           githubUrl: null,
         },
       ],

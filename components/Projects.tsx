@@ -25,6 +25,20 @@ function ExternalLinkIcon() {
   );
 }
 
+function GlobeIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className="h-4 w-4 fill-none stroke-current stroke-[1.8]"
+    >
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18" />
+      <path d="M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9s1.3-6.5 3.8-9Z" />
+    </svg>
+  );
+}
+
 export default function Projects() {
   const { t } = useLocale();
   const projects = t.projects.items;
@@ -100,6 +114,18 @@ export default function Projects() {
                     <ExternalLinkIcon />
                     <span>{t.projects.demoLabel}</span>
                   </a>
+
+                  {project.websiteUrl && (
+                    <a
+                      href={project.websiteUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 transition-colors hover:text-ink"
+                    >
+                      <GlobeIcon />
+                      <span>{t.projects.websiteLabel}</span>
+                    </a>
+                  )}
                 </div>
               </article>
             </Reveal>
