@@ -15,6 +15,14 @@ export const site = {
   availableForWork: true,
 };
 
+// Personal side-project spotlight, shown below Featured Projects.
+export const spotlight = {
+  name: "Coc Docs Platform (CDP)",
+  siteUrl: "https://docs.lovedev.me",
+  liveUrl: "https://docs.lovedev.me/overview",
+  image: "/image/cdp-preview.png",
+};
+
 // Footer / contact links. Remove any you don't use.
 export const socials: { label: string; href: string }[] = [
   { label: "GitHub", href: "https://github.com/Oudompanha123" },
@@ -63,7 +71,20 @@ export type Content = {
       title: string;
       description: string;
       stack: string[];
+      /** Overrides the default "Live Demo" link (#contact) when set. */
+      demoUrl?: string;
+      /** Overrides the default GitHub profile link; pass null to hide the GitHub button entirely. */
+      githubUrl?: string | null;
     }[];
+  };
+  spotlight: {
+    eyebrow: string;
+    badge: string;
+    title: string;
+    titleAccent: string;
+    description: string;
+    primaryCta: string;
+    secondaryCta: string;
   };
   experience: {
     eyebrow: string;
@@ -211,7 +232,25 @@ export const content: Record<Locale, Content> = {
             "Comprehensive financial API supporting SOAP and REST protocols. Implements complex transaction validations, security layers, and microservices architecture.",
           stack: ["Java", "Spring Boot", "SOAP", "Docker", "Microservices", "OAuth2"],
         },
+        {
+          title: "Coc Docs Platform (CDP)",
+          description:
+            "A personal side project — one workspace for every product's documentation. Tracks what's written, what's missing, and who's behind it across every product a team ships, with per-product knowledge bases, content-status tracking, and team role management.",
+          stack: ["Next.js", "TypeScript", "Tailwind CSS"],
+          demoUrl: "https://docs.lovedev.me/overview",
+          githubUrl: null,
+        },
       ],
+    },
+    spotlight: {
+      eyebrow: "personal project",
+      badge: "✦ Now tracking documentation coverage",
+      title: "One workspace for every product's",
+      titleAccent: "documentation.",
+      description:
+        "Coc Docs Platform is a side project I'm building — it tracks what's written, what's missing, and who's behind it, across every product a team ships. Each product gets its own knowledge base with per-item content status, quick editing, and team role management.",
+      primaryCta: "View live workspace",
+      secondaryCta: "Visit docs.lovedev.me",
     },
     experience: {
       eyebrow: "experience",
@@ -392,7 +431,25 @@ export const content: Record<Locale, Content> = {
             "API ធនាគារដែលមានលក្ខណៈពិសេសទាំង SOAP និង REST។ បង្កើតឡើងដោយ validation សម្រាប់ប្រតិបត្តិការប្រាក់, ស្រទាប់សុវត្ថិភាព, និងស្ថាបត្យកម្ម microservices។",
           stack: ["Java", "Spring Boot", "SOAP", "Docker", "Microservices", "OAuth2"],
         },
+        {
+          title: "Coc Docs Platform (CDP)",
+          description:
+            "គម្រោងផ្ទាល់ខ្លួន — កន្លែងធ្វើការតែមួយសម្រាប់ឯកសារផលិតផលទាំងអស់។ តាមដានអ្វីដែលបានសរសេរ អ្វីដែលខ្វះ និងអ្នកទទួលខុសត្រូវ លើផលិតផលនីមួយៗ ដោយមានមូលដ្ឋានចំណេះដឹងសម្រាប់ផលិតផលនីមួយៗ ការតាមដានស្ថានភាពមាតិកា និងការគ្រប់គ្រងតួនាទីក្រុម។",
+          stack: ["Next.js", "TypeScript", "Tailwind CSS"],
+          demoUrl: "https://docs.lovedev.me/overview",
+          githubUrl: null,
+        },
       ],
+    },
+    spotlight: {
+      eyebrow: "គម្រោងផ្ទាល់ខ្លួន",
+      badge: "✦ កំពុងតាមដានភាពពេញលេញនៃឯកសារ",
+      title: "កន្លែងធ្វើការតែមួយសម្រាប់",
+      titleAccent: "ឯកសារផលិតផលទាំងអស់។",
+      description:
+        "Coc Docs Platform ជាគម្រោងផ្ទាល់ខ្លួនដែលខ្ញុំកំពុងបង្កើត — វាតាមដានអ្វីដែលបានសរសេរ អ្វីដែលខ្វះ និងអ្នកទទួលខុសត្រូវ លើផលិតផលនីមួយៗ ដែលក្រុមមួយកំពុងដាក់ឱ្យដំណើរការ។ ផលិតផលនីមួយៗមានមូលដ្ឋានចំណេះដឹងផ្ទាល់ខ្លួន ជាមួយនឹងការតាមដានស្ថានភាពមាតិកា ការកែសម្រួលរហ័ស និងការគ្រប់គ្រងតួនាទីក្រុម។",
+      primaryCta: "មើលកន្លែងធ្វើការផ្ទាល់",
+      secondaryCta: "ចូលមើល docs.lovedev.me",
     },
     experience: {
       eyebrow: "បទពិសោធន៍",
