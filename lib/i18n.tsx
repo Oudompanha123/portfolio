@@ -4,6 +4,7 @@ import {
   createContext,
   useContext,
   useEffect,
+  useMemo,
   useState,
   type ReactNode,
 } from "react";
@@ -19,14 +20,14 @@ type LocaleContextValue = {
 
 const LocaleContext = createContext<LocaleContextValue | null>(null);
 
-export function LocaleProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Locale>("en");
+export function LocaleProvider({ children }: Readonly<{ children: ReactNode }>) {
+  const [lang, setLang] = useState<Locale>("en");
 
   // Hydrate the stored preference after mount (avoids SSR mismatch).
   useEffect(() => {
     try {
       const stored = localStorage.getItem("lang");
-      if (stored === "en" || stored === "km") setLangState(stored);
+      if (stored === "en" || stored === "km") setLang(stored);
     } catch {}
   }, []);
 
@@ -35,19 +36,23 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
     document.documentElement.lang = lang;
   }, [lang]);
 
-  const setLang = (next: Locale) => {
-    setLangState(next);
-    try {
-      localStorage.setItem("lang", next);
-    } catch {}
-  };
-
-  const toggle = () => setLang(lang === "en" ? "km" : "en");
+  const value = useMemo<LocaleContextValue>(() => {
+    const changeLang = (next: Locale) => {
+      setLang(next);
+      try {
+        localStorage.setItem("lang", next);
+      } catch {}
+    };
+    return {
+      lang,
+      setLang: changeLang,
+      toggle: () => changeLang(lang === "en" ? "km" : "en"),
+      t: content[lang],
+    };
+  }, [lang]);
 
   return (
-    <LocaleContext.Provider
-      value={{ lang, setLang, toggle, t: content[lang] }}
-    >
+    <LocaleContext.Provider value={value}>
       {children}
     </LocaleContext.Provider>
   );

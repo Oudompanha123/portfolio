@@ -10,7 +10,7 @@ type RevealProps = {
   className?: string;
 };
 
-export default function Reveal({ children, delay = 0, className }: RevealProps) {
+export default function Reveal({ children, delay = 0, className }: Readonly<RevealProps>) {
   const reduce = useReducedMotion();
 
   return (

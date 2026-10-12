@@ -11,7 +11,7 @@ export default function SectionHeading({
   index,
   eyebrow,
   title,
-}: SectionHeadingProps) {
+}: Readonly<SectionHeadingProps>) {
   return (
     <div className="mb-12 md:mb-16">
       <p className="label flex items-center gap-2">

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { isValidEmail } from "@/lib/validation";
 
 export const runtime = "nodejs";
 
@@ -33,7 +34,7 @@ export async function POST(request: Request) {
   if (!name || !email || !message) {
     return fail("Please fill in your name, email and message.", 400);
   }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  if (!isValidEmail(email)) {
     return fail("Please enter a valid email address.", 400);
   }
 
@@ -45,6 +46,10 @@ export async function POST(request: Request) {
     return fail("Email service is not configured.", 500);
   }
 
+  const headerLines = [`Name: ${name}`, `Email: ${email}`];
+  if (subject) headerLines.push(`Subject: ${subject}`);
+  const emailText = `${headerLines.join("\n")}\n\n${message}`;
+
   try {
     const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
@@ -52,7 +57,7 @@ export async function POST(request: Request) {
       to: [TO_EMAIL],
       replyTo: email,
       subject: subject ? `Portfolio: ${subject}` : `New portfolio message from ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\n${subject ? `Subject: ${subject}\n` : ""}\n${message}`,
+      text: emailText,
     });
 
     if (error) {

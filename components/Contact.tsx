@@ -1,15 +1,19 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, type SubmitEvent } from "react";
 import { site } from "@/lib/data";
 import { useLocale } from "@/lib/i18n";
+import { isValidEmail } from "@/lib/validation";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 
 type Status = "idle" | "submitting" | "success" | "error";
 type FieldErrors = { name?: string; email?: string; message?: string };
 
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+function formText(fd: FormData, field: string): string {
+  const value = fd.get(field);
+  return typeof value === "string" ? value : "";
+}
 
 export default function Contact() {
   const { t } = useLocale();
@@ -26,7 +30,7 @@ export default function Contact() {
     const errs: FieldErrors = {};
     if (!values.name.trim()) errs.name = c.errors.name;
     if (!values.email.trim()) errs.email = c.errors.email;
-    else if (!emailPattern.test(values.email.trim()))
+    else if (!isValidEmail(values.email.trim()))
       errs.email = c.errors.emailInvalid;
     if (!values.message.trim()) errs.message = c.errors.message;
     return errs;
@@ -38,14 +42,14 @@ export default function Contact() {
     );
   }
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
     const fd = new FormData(form);
     const values = {
-      name: String(fd.get("name") ?? ""),
-      email: String(fd.get("email") ?? ""),
-      message: String(fd.get("message") ?? ""),
+      name: formText(fd, "name"),
+      email: formText(fd, "email"),
+      message: formText(fd, "message"),
     };
 
     // Client-side validation — bail before hitting the network.

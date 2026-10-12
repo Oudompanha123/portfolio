@@ -6,7 +6,8 @@ export default function LangToggle() {
   const { lang, setLang } = useLocale();
 
   return (
-    <div className="flex items-center gap-1.5 font-mono text-xs" role="group" aria-label="Language">
+    <fieldset className="flex items-center gap-1.5 font-mono text-xs">
+      <legend className="sr-only">Language</legend>
       <button
         type="button"
         onClick={() => setLang("en")}
@@ -30,6 +31,6 @@ export default function LangToggle() {
       >
         ខ្មែរ
       </button>
-    </div>
+    </fieldset>
   );
 }

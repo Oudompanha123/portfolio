@@ -19,7 +19,7 @@ export default function About() {
 
       <div className="max-w-2xl space-y-6">
         {t.about.paragraphs.map((paragraph, i) => (
-          <Reveal key={i} delay={i * 80}>
+          <Reveal key={paragraph} delay={i * 80}>
             <p className="text-lg leading-relaxed text-muted">{paragraph}</p>
           </Reveal>
         ))}
