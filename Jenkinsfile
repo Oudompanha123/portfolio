@@ -117,17 +117,27 @@ pipeline {
         }
 
         stage('Smoke Test') {
+            // The image ships a Docker HEALTHCHECK (GET /api/health), so this
+            // just waits on Docker's own verdict instead of re-polling the app.
             steps {
                 sh '''
                     for i in $(seq 1 15); do
-                      if docker exec "$APP_NAME" wget -q -O /dev/null http://127.0.0.1:3000; then
-                        echo "App is up on port $APP_PORT"
-                        exit 0
-                      fi
-                      echo "Waiting for app... ($i/15)"
+                      STATUS=$(docker inspect --format='{{.State.Health.Status}}' "$APP_NAME")
+                      echo "Health status: $STATUS ($i/15)"
+                      case "$STATUS" in
+                        healthy)
+                          echo "App is up on port $APP_PORT"
+                          exit 0
+                          ;;
+                        unhealthy)
+                          echo "Container reported unhealthy"
+                          docker logs --tail 50 "$APP_NAME"
+                          exit 1
+                          ;;
+                      esac
                       sleep 3
                     done
-                    echo "App did not respond in time"
+                    echo "App did not become healthy in time"
                     docker logs --tail 50 "$APP_NAME"
                     exit 1
                 '''
