@@ -1,0 +1,14 @@
+node_modules
+.next
+out
+coverage
+.git
+.gitignore
+.scannerwork
+.claude
+.hintrc
+devops
+Jenkinsfile
+sonar-project.properties
+*.md
+.env*

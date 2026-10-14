@@ -1,0 +1,128 @@
+# Jenkins + SonarQube CI/CD (Docker)
+
+```
+GitHub ──► Jenkins ──► npm ci ─► next build ─► SonarQube scan ─► Quality Gate ─► docker build ─► deploy :3000
+             │                                      ▲                 │
+             └──────────── cicd Docker network ─────┘◄── webhook ─────┘
+```
+
+| Container  | URL                    | Purpose                              |
+|------------|------------------------|--------------------------------------|
+| jenkins    | http://localhost:8080  | Runs the pipeline (Node 22 + Docker CLI) |
+| sonarqube  | http://localhost:9000  | Code quality / security analysis     |
+| sonar-db   | (internal)             | Postgres for SonarQube               |
+| portfolio  | http://localhost:3000  | The deployed site (created by Jenkins) |
+
+## Where the files go
+
+```
+portfolio/                      <- your repo
+├── Jenkinsfile                 <- commit
+├── Dockerfile                  <- commit
+├── .dockerignore               <- commit
+├── sonar-project.properties    <- replace the existing one, commit
+└── devops/                     <- commit (or keep anywhere on the server)
+    ├── docker-compose.yml
+    ├── .env.example
+    └── jenkins/
+        ├── Dockerfile
+        └── plugins.txt
+```
+
+## 1. Host prerequisites
+
+- Docker Engine + Docker Compose v2 (or Docker Desktop), ~4 GB RAM free.
+- **Linux only** — SonarQube's Elasticsearch needs:
+
+```bash
+sudo sysctl -w vm.max_map_count=524288
+sudo sysctl -w fs.file-max=131072
+# make permanent:
+echo -e "vm.max_map_count=524288\nfs.file-max=131072" | sudo tee /etc/sysctl.d/99-sonarqube.conf
+```
+
+## 2. Start the stack
+
+```bash
+cd devops
+cp .env.example .env
+# Linux: put the docker group id in .env
+sed -i "s/^DOCKER_GID=.*/DOCKER_GID=$(getent group docker | cut -d: -f3)/" .env
+docker compose up -d --build
+docker compose ps
+```
+
+SonarQube takes 1–2 minutes to start. Watch it with `docker logs -f sonarqube`
+until you see `SonarQube is operational`.
+
+## 3. Configure SonarQube
+
+1. Open http://localhost:9000, log in as `admin` / `admin`, set a new password.
+2. **Token:** avatar (top right) → *My Account* → *Security* → Generate a token
+   (type *Global Analysis Token*, name `jenkins`). Copy it.
+3. **Webhook** (needed for the Quality Gate stage): *Administration* →
+   *Configuration* → *Webhooks* → *Create*
+   - Name: `Jenkins`
+   - URL: `http://jenkins:8080/sonarqube-webhook/` (trailing slash matters)
+
+## 4. Configure Jenkins
+
+1. Open http://localhost:8080. Get the unlock password:
+   ```bash
+   docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+   ```
+   Choose *Install suggested plugins* and create your admin user.
+   (The plugins this pipeline needs are already baked into the image.)
+2. **Credential:** *Manage Jenkins* → *Credentials* → *System* → *Global* →
+   *Add Credentials*
+   - Kind: `Secret text` · Secret: the SonarQube token · ID: `sonarqube-token`
+3. **SonarQube server:** *Manage Jenkins* → *System* → *SonarQube servers*
+   - Tick *Environment variables*
+   - Name: `SonarQube` (must match the Jenkinsfile)
+   - Server URL: `http://sonarqube:9000` (container name, not localhost)
+   - Token: `sonarqube-token` → Save
+4. **Scanner:** *Manage Jenkins* → *Tools* → *SonarQube Scanner installations*
+   → *Add* → Name: `SonarScanner` (must match the Jenkinsfile), tick
+   *Install automatically* → Save.
+
+## 5. Create the pipeline job
+
+*New Item* → name `portfolio` → *Pipeline* → OK
+
+- *Pipeline* section → Definition: **Pipeline script from SCM**
+- SCM: Git · Repository URL: `https://github.com/Oudompanha123/portfolio.git`
+- Branch: `*/main` · Script Path: `Jenkinsfile`
+- *Triggers* → tick **Poll SCM**, schedule `H/5 * * * *`
+  (GitHub webhooks can't reach `localhost`; use polling, or expose Jenkins
+  with ngrok / a public server and use *GitHub hook trigger* instead.)
+
+Save → **Build Now**. When it's green:
+- Analysis report: http://localhost:9000/dashboard?id=portfolio
+- Live site: http://localhost:3000
+
+## 6. Contact form (optional)
+
+Add a *Secret text* credential with ID `resend-api-key`, then follow the
+comment in the Jenkinsfile's *Deploy* stage to pass `RESEND_API_KEY` into the
+container.
+
+## Troubleshooting
+
+| Symptom | Fix |
+|---|---|
+| `permission denied ... /var/run/docker.sock` | Wrong `DOCKER_GID` in `.env`. Fix it and `docker compose up -d`. Lab-only fallback: `docker exec -u root jenkins chmod 666 /var/run/docker.sock` |
+| SonarQube container keeps restarting | `vm.max_map_count` too low (step 1). Check `docker logs sonarqube`. |
+| Scanner: `Fail to get bootstrap index from server` / connection refused | Server URL in Jenkins must be `http://sonarqube:9000`, and `sonar.host.url` must not be set to localhost in `sonar-project.properties`. |
+| Quality Gate stage hangs, then times out | Webhook missing or wrong URL (step 3.3). |
+| `tool 'SonarScanner'` / `withSonarQubeEnv('SonarQube')` not found | Names in Jenkins must match the Jenkinsfile exactly (case-sensitive). |
+| `Failed to fetch ... from Google Fonts` during build | `next/font` downloads fonts at build time; the host needs internet access. |
+| Port 3000 already in use | Change `APP_PORT` in the Jenkinsfile. |
+
+## Useful commands
+
+```bash
+docker compose logs -f jenkins          # pipeline host logs
+docker compose down                     # stop (data kept in volumes)
+docker compose down -v                  # stop and wipe all Jenkins/Sonar data
+docker logs -f portfolio                # deployed app logs
+```
