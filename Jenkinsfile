@@ -38,7 +38,12 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
+        stage('SonarQube Analysis & Quality Gate') {
+            // No webhook is used here: SonarQube's SSRF protection rejects any
+            // webhook URL on a loopback/private/container-network address (which
+            // http://jenkins:8080/... always is when both run in Docker on one
+            // host). Instead, this stage polls SonarQube's own API for the
+            // Compute Engine task result and the Quality Gate status.
             environment {
                 // Name must match Manage Jenkins > Tools > SonarQube Scanner installations
                 SCANNER_HOME = tool 'SonarScanner'
@@ -53,15 +58,37 @@ pipeline {
                           -Dsonar.token="$SONAR_AUTH_TOKEN" \
                           -Dsonar.projectVersion="$BUILD_NUMBER"
                     '''
-                }
-            }
-        }
 
-        stage('Quality Gate') {
-            // Needs the SonarQube webhook -> http://jenkins:8080/sonarqube-webhook/
-            steps {
-                timeout(time: 5, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
+                    timeout(time: 5, unit: 'MINUTES') {
+                        sh '''
+                            set -e
+                            CE_TASK_URL=$(grep '^ceTaskUrl=' .scannerwork/report-task.txt | cut -d= -f2-)
+
+                            STATUS="PENDING"
+                            RESP=""
+                            while [ "$STATUS" = "PENDING" ] || [ "$STATUS" = "IN_PROGRESS" ]; do
+                              sleep 5
+                              RESP=$(curl -s -u "$SONAR_AUTH_TOKEN:" "$CE_TASK_URL")
+                              STATUS=$(echo "$RESP" | jq -r '.task.status')
+                              echo "SonarQube analysis task status: $STATUS"
+                            done
+
+                            if [ "$STATUS" != "SUCCESS" ]; then
+                              echo "SonarQube analysis task did not succeed: $STATUS"
+                              exit 1
+                            fi
+
+                            ANALYSIS_ID=$(echo "$RESP" | jq -r '.task.analysisId')
+                            QG=$(curl -s -u "$SONAR_AUTH_TOKEN:" "$SONAR_HOST_URL/api/qualitygates/project_status?analysisId=$ANALYSIS_ID")
+                            QG_STATUS=$(echo "$QG" | jq -r '.projectStatus.status')
+                            echo "Quality Gate status: $QG_STATUS"
+
+                            if [ "$QG_STATUS" != "OK" ]; then
+                              echo "$QG"
+                              exit 1
+                            fi
+                        '''
+                    }
                 }
             }
         }

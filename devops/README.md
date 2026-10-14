@@ -2,13 +2,20 @@
 
 ```
 GitHub ──► Jenkins ──► npm ci ─► next build ─► SonarQube scan ─► Quality Gate ─► docker build ─► deploy :3000
-             │                                      ▲                 │
-             └──────────── cicd Docker network ─────┘◄── webhook ─────┘
+             │                        (polls SonarQube's API — see note below)    │
+             └──────────────────────── cicd Docker network ─────────────────────────┘
 ```
+
+Note: this does **not** use a SonarQube webhook. Recent SonarQube versions
+block webhook URLs on loopback/private/container-network addresses as an
+SSRF protection, and `http://jenkins:8080/...` is always one of those when
+Jenkins and SonarQube both run in Docker on the same host — there's no way
+around it. Instead, the Jenkinsfile's Quality Gate stage polls SonarQube's
+own `/api/ce/task` and `/api/qualitygates/project_status` endpoints directly.
 
 | Container  | URL                    | Purpose                              |
 |------------|------------------------|--------------------------------------|
-| jenkins    | http://localhost:8080  | Runs the pipeline (Node 22 + Docker CLI) |
+| jenkins    | http://localhost:8090  | Runs the pipeline (Node 22 + Docker CLI) |
 | sonarqube  | http://localhost:9000  | Code quality / security analysis     |
 | sonar-db   | (internal)             | Postgres for SonarQube               |
 | portfolio  | http://localhost:3000  | The deployed site (created by Jenkins) |
@@ -60,14 +67,14 @@ until you see `SonarQube is operational`.
 1. Open http://localhost:9000, log in as `admin` / `admin`, set a new password.
 2. **Token:** avatar (top right) → *My Account* → *Security* → Generate a token
    (type *Global Analysis Token*, name `jenkins`). Copy it.
-3. **Webhook** (needed for the Quality Gate stage): *Administration* →
-   *Configuration* → *Webhooks* → *Create*
-   - Name: `Jenkins`
-   - URL: `http://jenkins:8080/sonarqube-webhook/` (trailing slash matters)
+
+No webhook step here — see the note above. (If you try to add one anyway,
+SonarQube will reject it with "Invalid URL: loopback, wildcard, link-local,
+site-local, ... addresses ... are not allowed for webhooks.")
 
 ## 4. Configure Jenkins
 
-1. Open http://localhost:8080. Get the unlock password:
+1. Open http://localhost:8090. Get the unlock password:
    ```bash
    docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
    ```
@@ -113,7 +120,8 @@ container.
 | `permission denied ... /var/run/docker.sock` | Wrong `DOCKER_GID` in `.env`. Fix it and `docker compose up -d`. Lab-only fallback: `docker exec -u root jenkins chmod 666 /var/run/docker.sock` |
 | SonarQube container keeps restarting | `vm.max_map_count` too low (step 1). Check `docker logs sonarqube`. |
 | Scanner: `Fail to get bootstrap index from server` / connection refused | Server URL in Jenkins must be `http://sonarqube:9000`, and `sonar.host.url` must not be set to localhost in `sonar-project.properties`. |
-| Quality Gate stage hangs, then times out | Webhook missing or wrong URL (step 3.3). |
+| Quality Gate stage hangs, then times out | Check `docker logs -f sonar-db`/`sonarqube`; the pipeline polls the API directly so it shouldn't depend on network reachability from SonarQube back to Jenkins. |
+| `jq: command not found` in the Quality Gate stage | Rebuild the Jenkins image: `docker compose up -d --build jenkins` (jq is installed there). |
 | `tool 'SonarScanner'` / `withSonarQubeEnv('SonarQube')` not found | Names in Jenkins must match the Jenkinsfile exactly (case-sensitive). |
 | `Failed to fetch ... from Google Fonts` during build | `next/font` downloads fonts at build time; the host needs internet access. |
 | Port 3000 already in use | Change `APP_PORT` in the Jenkinsfile. |

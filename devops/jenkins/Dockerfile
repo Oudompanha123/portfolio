@@ -3,8 +3,10 @@ FROM jenkins/jenkins:lts-jdk17
 USER root
 
 # Node.js 22 (to build Next.js) + Docker CLI (to build/run the app image on the host daemon)
+# + jq (to parse SonarQube's Compute Engine task / Quality Gate API responses,
+#   since webhooks can't be used: see devops/README.md)
 RUN apt-get update \
- && apt-get install -y --no-install-recommends ca-certificates curl gnupg \
+ && apt-get install -y --no-install-recommends ca-certificates curl gnupg jq \
  && curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
  && apt-get install -y --no-install-recommends nodejs \
  && install -m 0755 -d /etc/apt/keyrings \
