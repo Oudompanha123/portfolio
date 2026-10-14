@@ -12,7 +12,7 @@ pipeline {
 
     environment {
         APP_NAME  = 'portfolio'
-        APP_PORT  = '3000'                 // host port the site is published on
+        APP_PORT  = '3100'                 // host port the site is published on (3000/3001 are taken by other local dev servers)
         IMAGE_TAG = "${env.BUILD_NUMBER}"
         NEXT_TELEMETRY_DISABLED = '1'
     }

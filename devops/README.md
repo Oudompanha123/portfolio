@@ -18,7 +18,7 @@ own `/api/ce/task` and `/api/qualitygates/project_status` endpoints directly.
 | jenkins    | http://localhost:8090  | Runs the pipeline (Node 22 + Docker CLI) |
 | sonarqube  | http://localhost:9000  | Code quality / security analysis     |
 | sonar-db   | (internal)             | Postgres for SonarQube               |
-| portfolio  | http://localhost:3000  | The deployed site (created by Jenkins) |
+| portfolio  | http://localhost:3100  | The deployed site (created by Jenkins) |
 
 ## Where the files go
 
@@ -105,7 +105,7 @@ site-local, ... addresses ... are not allowed for webhooks.")
 
 Save → **Build Now**. When it's green:
 - Analysis report: http://localhost:9000/dashboard?id=portfolio
-- Live site: http://localhost:3000
+- Live site: http://localhost:3100
 
 ## 6. Contact form (optional)
 
@@ -124,7 +124,7 @@ container.
 | `jq: command not found` in the Quality Gate stage | Rebuild the Jenkins image: `docker compose up -d --build jenkins` (jq is installed there). |
 | `tool 'SonarScanner'` / `withSonarQubeEnv('SonarQube')` not found | Names in Jenkins must match the Jenkinsfile exactly (case-sensitive). |
 | `Failed to fetch ... from Google Fonts` during build | `next/font` downloads fonts at build time; the host needs internet access. |
-| Port 3000 already in use | Change `APP_PORT` in the Jenkinsfile. |
+| `APP_PORT` already in use | Change `APP_PORT` in the Jenkinsfile (defaults to 3100 since 3000/3001 are often taken by other local dev servers). |
 
 ## Useful commands
 
