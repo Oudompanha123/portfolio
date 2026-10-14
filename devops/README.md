@@ -1,9 +1,12 @@
-# Jenkins + SonarQube CI/CD (Docker)
+# Jenkins + SonarQube CI/CD (Docker Swarm)
+
+Branching follows GitFlow — see [`../GITFLOW.md`](../GITFLOW.md). Jenkins
+builds `main` and deploys it to a (single-node) Docker Swarm.
 
 ```
-GitHub ──► Jenkins ──► npm ci ─► next build ─► SonarQube scan ─► Quality Gate ─► docker build ─► deploy :3000
-             │                        (polls SonarQube's API — see note below)    │
-             └──────────────────────── cicd Docker network ─────────────────────────┘
+GitHub ──► Jenkins ──► npm ci ─► next build ─► SonarQube scan ─► Quality Gate ─► docker build ─► swarm deploy :3100
+             │                        (polls SonarQube's API — see note below)                      │
+             └──────────────────────────────── cicd Docker network ────────────────────────────────────┘
 ```
 
 Note: this does **not** use a SonarQube webhook. Recent SonarQube versions
@@ -24,12 +27,14 @@ own `/api/ce/task` and `/api/qualitygates/project_status` endpoints directly.
 
 ```
 portfolio/                      <- your repo
+├── GITFLOW.md                  <- commit (branching model)
 ├── Jenkinsfile                 <- commit
 ├── Dockerfile                  <- commit
 ├── .dockerignore               <- commit
 ├── sonar-project.properties    <- replace the existing one, commit
 └── devops/                     <- commit (or keep anywhere on the server)
-    ├── docker-compose.yml
+    ├── docker-compose.yml       (Jenkins + SonarQube + Postgres — CI/CD tooling)
+    ├── stack.yml                (the portfolio's own Swarm deployment)
     ├── .env.example
     └── jenkins/
         ├── Dockerfile
@@ -103,15 +108,21 @@ site-local, ... addresses ... are not allowed for webhooks.")
   (GitHub webhooks can't reach `localhost`; use polling, or expose Jenkins
   with ngrok / a public server and use *GitHub hook trigger* instead.)
 
-Save → **Build Now**. When it's green:
+Save → **Build Now**. The Deploy stage runs `docker swarm init` (a one-time
+no-op after the first build — this host becomes its own single-node swarm
+manager) and then `docker stack deploy -c devops/stack.yml portfolio`. When
+it's green:
 - Analysis report: http://localhost:9000/dashboard?id=portfolio
 - Live site: http://localhost:3100
+- `docker node ls` — this host as the swarm manager
+- `docker service ls` — the running `portfolio_portfolio` service
 
 ## 6. Contact form (optional)
 
 Add a *Secret text* credential with ID `resend-api-key`, then follow the
-comment in the Jenkinsfile's *Deploy* stage to pass `RESEND_API_KEY` into the
-container.
+comment in the Jenkinsfile's *Deploy to Swarm* stage to pass it into
+`devops/stack.yml` as an environment entry (Swarm services don't inherit the
+build's shell environment the way a plain `docker run` would).
 
 ## Troubleshooting
 
@@ -132,5 +143,7 @@ container.
 docker compose logs -f jenkins          # pipeline host logs
 docker compose down                     # stop (data kept in volumes)
 docker compose down -v                  # stop and wipe all Jenkins/Sonar data
-docker logs -f portfolio                # deployed app logs
+docker service logs -f portfolio_portfolio   # deployed app logs
+docker service ps portfolio_portfolio        # task history / why a task restarted
+docker stack rm portfolio                    # tear down the deployed site (not CI/CD)
 ```

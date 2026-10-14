@@ -1,5 +1,5 @@
 // CI/CD pipeline for the Next.js portfolio
-// Checkout -> Install -> Build -> SonarQube scan -> Quality Gate -> Docker build -> Deploy -> Smoke test
+// Checkout -> Install -> Build -> SonarQube scan -> Quality Gate -> Docker build -> Deploy to Swarm -> Smoke test
 pipeline {
     agent any
 
@@ -99,46 +99,49 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Deploy to Swarm') {
+            // Deploys as a Docker Swarm service (devops/stack.yml) instead of a
+            // plain container. `docker swarm init` is a one-time no-op after the
+            // first run; this host is a single-node swarm (its own manager).
             steps {
                 sh '''
-                    docker rm -f "$APP_NAME" 2>/dev/null || true
-                    docker run -d \
-                      --name "$APP_NAME" \
-                      --restart unless-stopped \
-                      -p "$APP_PORT:3000" \
-                      "$APP_NAME:$IMAGE_TAG"
+                    docker swarm init >/dev/null 2>&1 || true
+                    IMAGE_TAG="$IMAGE_TAG" docker stack deploy -c devops/stack.yml "$APP_NAME"
                 '''
                 // To enable the contact form, add a "Secret text" credential with ID
-                // resend-api-key, wrap the sh step above in:
-                //   withCredentials([string(credentialsId: 'resend-api-key', variable: 'RESEND_API_KEY')]) { ... }
-                // and add  -e RESEND_API_KEY  to the docker run command.
+                // resend-api-key, then pass it through as an environment entry in
+                // devops/stack.yml (Swarm secrets are a cleaner fit than a shell var
+                // here, since `docker stack deploy` doesn't forward process env to
+                // the running service).
             }
         }
 
         stage('Smoke Test') {
-            // The image ships a Docker HEALTHCHECK (GET /api/health), so this
-            // just waits on Docker's own verdict instead of re-polling the app.
+            // The image ships a Docker HEALTHCHECK (GET /api/health); this stage
+            // waits on Docker's own verdict for the service's running task.
             steps {
                 sh '''
-                    for i in $(seq 1 15); do
-                      STATUS=$(docker inspect --format='{{.State.Health.Status}}' "$APP_NAME")
-                      echo "Health status: $STATUS ($i/15)"
-                      case "$STATUS" in
-                        healthy)
-                          echo "App is up on port $APP_PORT"
-                          exit 0
-                          ;;
-                        unhealthy)
-                          echo "Container reported unhealthy"
-                          docker logs --tail 50 "$APP_NAME"
-                          exit 1
-                          ;;
-                      esac
+                    for i in $(seq 1 20); do
+                      CID=$(docker ps -q --filter "name=${APP_NAME}_${APP_NAME}" | head -1)
+                      if [ -n "$CID" ]; then
+                        STATUS=$(docker inspect --format='{{.State.Health.Status}}' "$CID" 2>/dev/null || echo "")
+                        echo "Health status: $STATUS ($i/20)"
+                        case "$STATUS" in
+                          healthy)
+                            echo "App is up on port $APP_PORT"
+                            exit 0
+                            ;;
+                          unhealthy)
+                            echo "Container reported unhealthy"
+                            docker logs --tail 50 "$CID"
+                            exit 1
+                            ;;
+                        esac
+                      fi
                       sleep 3
                     done
                     echo "App did not become healthy in time"
-                    docker logs --tail 50 "$APP_NAME"
+                    docker service logs --tail 50 "${APP_NAME}_${APP_NAME}" || true
                     exit 1
                 '''
             }
