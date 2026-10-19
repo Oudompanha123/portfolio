@@ -231,10 +231,12 @@ export const content: Record<Locale, Content> = {
           stack: ["React", "Tailwind CSS", "Spring Boot", "MySQL", "REST API"],
         },
         {
-          title: "Digital Wallet API",
+          title: "WeBill365",
           description:
-            "Comprehensive financial API supporting SOAP and REST protocols. Implements complex transaction validations, security layers, and microservices architecture.",
-          stack: ["Java", "Spring Boot", "SOAP", "Docker", "Microservices", "OAuth2"],
+            "A personal side project — a solution for billing & payment collection. Transform how a business collects payments with a centralized platform to manage, automate, and track every transaction: automated bulk bill creation, KHQR payment collection, real-time payment tracking & alerts, and SMS & Telegram notifications.",
+          stack: ["Next.js", "Spring Boot", "PostgreSQL", "TypeScript", "Tailwind CSS"],
+          demoUrl: "https://webill365.com/kh",
+          githubUrl: null,
         },
         {
           title: "Coc Docs Platform (CDP)",
@@ -432,10 +434,12 @@ export const content: Record<Locale, Content> = {
           stack: ["React", "Tailwind CSS", "Spring Boot", "MySQL", "REST API"],
         },
         {
-          title: "Digital Wallet API",
+          title: "WeBill365",
           description:
-            "API ធនាគារដែលមានលក្ខណៈពិសេសទាំង SOAP និង REST។ បង្កើតឡើងដោយ validation សម្រាប់ប្រតិបត្តិការប្រាក់, ស្រទាប់សុវត្ថិភាព, និងស្ថាបត្យកម្ម microservices។",
-          stack: ["Java", "Spring Boot", "SOAP", "Docker", "Microservices", "OAuth2"],
+            "គម្រោងផ្ទាល់ខ្លួន — ដំណោះស្រាយសម្រាប់ចេញវិក្កយបត្រ និងប្រមូលការទូទាត់។ ផ្លាស់ប្តូរវិធីដែលអាជីវកម្មប្រមូលការទូទាត់ ជាមួយនឹងវេទិកាតែមួយសម្រាប់គ្រប់គ្រង ធ្វើស្វ័យប្រវត្តិកម្ម និងតាមដានរាល់ប្រតិបត្តិការ៖ ការបង្កើតវិក្កយបត្រច្រើនដោយស្វ័យប្រវត្តិ ការទូទាត់តាម KHQR ការតាមដានការទូទាត់ និងការជូនដំណឹងភ្លាមៗ ព្រមទាំងការជូនដំណឹងតាម SMS និង Telegram។",
+          stack: ["Next.js", "Spring Boot", "PostgreSQL", "TypeScript", "Tailwind CSS"],
+          demoUrl: "https://webill365.com/kh",
+          githubUrl: null,
         },
         {
           title: "Coc Docs Platform (CDP)",
