@@ -32,9 +32,13 @@ pipeline {
         }
 
         stage('Build') {
-            // next build also runs the TypeScript type check
+            // next build also runs the TypeScript type check.
+            // next/font fetches font files from Google at build time, which
+            // occasionally blips transiently — retry once before failing.
             steps {
-                sh 'npm run build'
+                retry(2) {
+                    sh 'npm run build'
+                }
             }
         }
 
