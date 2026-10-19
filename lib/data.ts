@@ -18,7 +18,7 @@ export const site = {
 // Personal side-project spotlight, shown below Featured Projects.
 export const spotlight = {
   name: "Coc Docs Platform (CDP)",
-  siteUrl: "https://coocon.me/welcome",
+  siteUrl: "https://coocon.me",
   liveUrl: "https://coocon.me/login",
   image: "/image/cdp-preview.png",
 };
@@ -242,7 +242,7 @@ export const content: Record<Locale, Content> = {
             "A personal side project — one workspace for every product's documentation. Tracks what's written, what's missing, and who's behind it across every product a team ships, with per-product knowledge bases, content-status tracking, and team role management.",
           stack: ["Next.js", "Spring Boot", "PostgreSQL", "TypeScript", "Tailwind CSS"],
           demoUrl: "https://coocon.me/login",
-          websiteUrl: "https://coocon.me/welcome",
+          websiteUrl: "https://coocon.me",
           githubUrl: null,
         },
       ],
@@ -443,7 +443,7 @@ export const content: Record<Locale, Content> = {
             "គម្រោងផ្ទាល់ខ្លួន — កន្លែងធ្វើការតែមួយសម្រាប់ឯកសារផលិតផលទាំងអស់។ តាមដានអ្វីដែលបានសរសេរ អ្វីដែលខ្វះ និងអ្នកទទួលខុសត្រូវ លើផលិតផលនីមួយៗ ដោយមានមូលដ្ឋានចំណេះដឹងសម្រាប់ផលិតផលនីមួយៗ ការតាមដានស្ថានភាពមាតិកា និងការគ្រប់គ្រងតួនាទីក្រុម។",
           stack: ["Next.js", "Spring Boot", "PostgreSQL", "TypeScript", "Tailwind CSS"],
           demoUrl: "https://coocon.me/login",
-          websiteUrl: "https://coocon.me/welcome",
+          websiteUrl: "https://coocon.me",
           githubUrl: null,
         },
       ],
