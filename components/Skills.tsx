@@ -21,8 +21,8 @@ export default function Skills() {
 
         <div className="grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
           {t.skills.groups.map((group, i) => (
-            <Reveal key={group.title} delay={i * 80}>
-              <div className="h-full rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-accent">
+            <Reveal key={group.title} delay={i * 80} className="self-start">
+              <div className="rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-accent">
                 <h3 className="label mb-4">{group.title}</h3>
                 <ul className="flex flex-wrap gap-2">
                   {group.items.map((item) => (
