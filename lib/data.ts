@@ -193,7 +193,7 @@ export const content: Record<Locale, Content> = {
         },
         {
           title: "Production Support & Deployment",
-          items: ["Docker", "GitLab CI/CD", "Spring Boot Actuator", "Zabbix"],
+          items: ["Docker", "Docker Swarm", "Jenkins", "GitLab CI/CD", "AWS", "Linux (Bash)", "Spring Boot Actuator", "Zabbix"],
         },
         {
           title: "Git & Team Workflow",
@@ -411,7 +411,7 @@ export const content: Record<Locale, Content> = {
         },
         {
           title: "ការគាំទ្រផលិតកម្ម & ការដាក់ឱ្យប្រើប្រាស់",
-          items: ["Docker", "GitLab CI/CD", "Spring Boot Actuator", "Zabbix"],
+          items: ["Docker", "Docker Swarm", "Jenkins", "GitLab CI/CD", "AWS", "Linux (Bash)", "Spring Boot Actuator", "Zabbix"],
         },
         {
           title: "Git & ការងារជាក្រុម",
