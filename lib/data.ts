@@ -126,7 +126,7 @@ export const content: Record<Locale, Content> = {
     profile: {
       role: "Full Stack Developer",
       tagline:
-        "I build responsive web applications, secure backend services, and data-driven solutions with Java, Spring Boot, React, Next.js, and PostgreSQL.",
+        "I build and maintain web applications, RESTful APIs, and database-driven solutions in a B2B fintech environment — Java, Spring Boot, microservices, and GraphQL on the backend, Next.js and TypeScript on the frontend.",
       location: "Phnom Penh, Cambodia · GMT+7",
     },
     nav: {
@@ -151,9 +151,9 @@ export const content: Record<Locale, Content> = {
       eyebrow: "about",
       title: "A bit about me",
       paragraphs: [
-        "I am a full-stack developer with 2+ years of hands-on experience building and maintaining web applications, RESTful APIs, and database-driven solutions using Java, Spring Boot, Next.js, TypeScript, and modern frontend tooling.",
-        "I hold a Bachelor Degree in Computer Science from the Royal University of Phnom Penh and completed the Software Expert Training Program at the Korea Software HRD Center. My work focuses on clean architecture, scalable backend design, and building user-friendly interfaces that align with business goals.",
-        "At KOSIGN, I design and develop full-stack features for B2B Fin-Tech and e-Finance systems, integrating backend services with PostgreSQL, JWT authentication, and third-party APIs while delivering responsive front-end experiences in React and Next.js. I am confident working in English and Khmer, and I enjoy solving technical problems with strong communication and collaboration.",
+        "I'm a full-stack developer with 2+ years of hands-on experience building and maintaining web applications, RESTful APIs, and database-driven solutions in a B2B fintech environment. I work end to end with Java, Spring Boot, microservices, and GraphQL APIs on the backend, and Next.js and TypeScript on the frontend.",
+        "I'm strong in system integration and API Gateway design — connecting internal services to third-party financial systems through REST and GraphQL, with Spring Cloud, Eureka, and OpenFeign keeping payment and loan flows running even when one service slows down. I'm comfortable debugging across the whole stack to keep production systems reliable.",
+        "At KOSIGN — a Webcash Group company building B2B fintech, e-finance, and global IT outsourcing solutions — I've delivered KHQR-based billing and auto-collection, digital loan origination and repayment, and GDT-integrated e-invoicing, all secured with Spring Security, JWT, and role-based access control. I hold a Bachelor's Degree in Computer Science from the Royal University of Phnom Penh and completed 864 hours of training at the Korea Software HRD Center. I work comfortably in Khmer (native) and English (advanced).",
       ],
     },
     skills: {
@@ -161,51 +161,49 @@ export const content: Record<Locale, Content> = {
       title: "What I work with",
       groups: [
         {
-          title: "Frontend",
-          items: [
-            "HTML5 & CSS3",
-            "JavaScript",
-            "TypeScript",
-            "React.js",
-            "Next.js",
-            "Tailwind CSS",
-            "jQuery",
-          ],
+          title: "API Development & Integration",
+          items: ["REST", "GraphQL", "OpenFeign", "Swagger / OpenAPI", "Postman"],
         },
         {
-          title: "Backend",
+          title: "API Gateway & Microservices",
           items: [
-            "Java 17-21",
-            "Spring Boot",
-            "Spring Security",
-            "RBAC",
-            "JWT & OAuth2",
-            "Spring Data JPA",
-            "Hibernate",
-          ],
-        },
-        {
-          title: "Database & API Design",
-          items: [
-            "SQL",
-            "MySQL",
-            "PostgreSQL",
-            "ERD Design",
-            "RESTful & SOAP API Design",
-          ],
-        },
-        {
-          title: "Microservices",
-          items: [
+            "Spring Cloud Gateway",
             "Eureka",
-            "API Gateway",
-            "Spring Cloud OpenFeign",
-            "Load Balancer",
+            "Load Balancing",
+            "Timeouts & Fallbacks",
           ],
         },
         {
-          title: "DevOps & Tools",
-          items: ["Git", "Docker", "Postman", "Swagger / OpenAPI", "AWS", "Jira", "Confluence"],
+          title: "Java & Spring Boot",
+          items: ["Java", "Spring Boot", "Spring MVC", "Spring Data JPA", "Hibernate"],
+        },
+        {
+          title: "Security",
+          items: ["Spring Security", "JWT", "OAuth2", "RBAC"],
+        },
+        {
+          title: "Relational Databases",
+          items: ["PostgreSQL", "ERD Design", "SQL Tuning", "Data Validation"],
+        },
+        {
+          title: "Production Support & Deployment",
+          items: ["Docker", "GitLab CI/CD", "Spring Boot Actuator", "Zabbix"],
+        },
+        {
+          title: "Git & Team Workflow",
+          items: ["Git", "GitHub", "GitLab", "Merge Requests", "Code Review"],
+        },
+        {
+          title: "Frontend & Prototyping",
+          items: [
+            "React",
+            "Next.js",
+            "TypeScript",
+            "Tailwind CSS",
+            "Shadcn/UI",
+            "MUI",
+            "Vite",
+          ],
         },
       ],
     },
@@ -219,16 +217,12 @@ export const content: Record<Locale, Content> = {
       websiteLabel: "Website",
       items: [
         {
-          title: "E-Commerce Platform",
+          title: "We Invoice",
           description:
-            "Full-stack e-commerce solution with Next.js frontend and Spring Boot backend. Features JWT authentication, product management, shopping cart, and admin dashboard.",
-          stack: ["Next.js", "Spring Boot", "PostgreSQL", "Docker", "JWT", "Redis"],
-        },
-        {
-          title: "Library Management System",
-          description:
-            "Modern library management application with React frontend and Spring Boot backend. Includes CRUD operations, advanced pagination, and responsive design.",
-          stack: ["React", "Tailwind CSS", "Spring Boot", "MySQL", "REST API"],
+            "A side project at KOSIGN — an e-invoicing platform for issuing, tracking, and managing GDT-integrated invoices end to end.",
+          stack: ["Next.js", "Spring Boot", "PostgreSQL", "TypeScript", "Tailwind CSS"],
+          demoUrl: "https://dev.we-invoice.com",
+          githubUrl: null,
         },
         {
           title: "WeBill365",
@@ -236,6 +230,14 @@ export const content: Record<Locale, Content> = {
             "A personal side project — a solution for billing & payment collection. Transform how a business collects payments with a centralized platform to manage, automate, and track every transaction: automated bulk bill creation, KHQR payment collection, real-time payment tracking & alerts, and SMS & Telegram notifications.",
           stack: ["Next.js", "Spring Boot", "PostgreSQL", "TypeScript", "Tailwind CSS"],
           demoUrl: "https://webill365.com/kh",
+          githubUrl: null,
+        },
+        {
+          title: "Cafe Merchant",
+          description:
+            "A side project at KOSIGN — a merchant-facing platform for café businesses to manage orders and payments.",
+          stack: ["Next.js", "Spring Boot", "PostgreSQL", "TypeScript", "Tailwind CSS"],
+          demoUrl: "https://cafe-merchant.kosign.dev",
           githubUrl: null,
         },
         {
@@ -265,19 +267,20 @@ export const content: Record<Locale, Content> = {
       educationTitle: "Education",
       jobs: [
         {
-          role: "Web Developer / Full Stack Developer",
+          role: "Web Developer (Full Stack)",
           company: "KOSIGN (Cambodia) Investment Co., Ltd.",
           description:
-            "The company specializes in B2B Fin-Tech, e-Finance, and Global IT Outsourcing.",
+            "A Webcash Group company building B2B fintech, e-finance, and global IT outsourcing solutions, including system integrations and banking infrastructure.",
           logo: "/image/KOSIGN-removebg-preview.png",
-          period: "Aug 2024 — Present",
+          period: "2024 — Present",
           points: [
-            "Developed backend applications and RESTful APIs with Spring Boot and Spring Data JPA for efficient data access, JWT authentication, and role-based authorization integrated with PostgreSQL.",
-            "Built and maintained microservice-based backend systems using Spring Cloud, Eureka, API Gateway, and OpenFeign for service discovery, routing, and inter-service communication.",
-            "Collaborated with cross-functional teams to design solutions, connect frontend and backend services, and deliver business-ready features for internal and external users.",
-            "Built responsive and user-friendly interfaces using Next.js, TypeScript, HTML5, CSS3, and Tailwind CSS to support modern web experiences.",
-            "Containerized services with Docker and used Git and GitLab for source control, versioning, and release coordination.",
-            "Tested API endpoints using Postman and ensured application quality through consistent debugging, code review, and iterative improvements.",
+            "Integrated internal services with third-party financial systems through REST and GraphQL APIs, fetching only the fields each screen needed.",
+            "Built services in a Spring Cloud microservices architecture with Eureka, API Gateway routing, and OpenFeign, adding timeouts and fallbacks so one degraded service didn't stop payment or loan flows.",
+            "Delivered regulated fintech features: KHQR-based billing and auto-collection, digital loan origination and repayment, and GDT-integrated e-invoicing.",
+            "Secured services with Spring Security, JWT, and role-based access control, passing code reviews against Webcash Group's K-Fintech standards.",
+            "Designed PostgreSQL schemas and ERDs, and tuned SQL so billing and settlement data stayed fast and reconciled.",
+            "Deployed with Docker and GitLab CI/CD, monitored with Spring Boot Actuator and Zabbix, and traced failed transactions to resolve tickets quickly.",
+            "Wrote Swagger/OpenAPI specs before development so partner teams could integrate in parallel, and tested APIs with Postman.",
           ],
         },
       ],
@@ -329,7 +332,7 @@ export const content: Record<Locale, Content> = {
     profile: {
       role: "អ្នកអភិវឌ្ឍ Full Stack",
       tagline:
-        "ខ្ញុំបង្កើតកម្មវិធីគេហទំព័រឆ្លើយតប, សេវាកម្ម Backend មានសុវត្ថិភាព, និងដំណោះស្រាយដែលផ្អែកលើទិន្នន័យដោយ Java, Spring Boot, React, Next.js និង PostgreSQL។",
+        "ខ្ញុំបង្កើត និងថែទាំកម្មវិធីគេហទំព័រ RESTful API និងដំណោះស្រាយដែលផ្អែកលើទិន្នន័យ នៅក្នុងបរិយាកាស B2B Fintech — ជាមួយ Java, Spring Boot, microservices និង GraphQL នៅខាងក្រោយ Next.js និង TypeScript នៅខាងមុខ។",
       location: "ភ្នំពេញ ប្រទេសកម្ពុជា · GMT+7",
     },
     nav: {
@@ -354,9 +357,9 @@ export const content: Record<Locale, Content> = {
       eyebrow: "អំពី",
       title: "ខ្លះៗអំពីខ្ញុំ",
       paragraphs: [
-        "ខ្ញុំជាអ្នកអភិវឌ្ឍ Full Stack ដែលមានបទពិសោធន៍ជាក់ស្តែងជាង 2 ឆ្នាំ ក្នុងការបង្កើត និងថែទាំកម្មវិធីគេហទំព័រ RESTful API និងដំណោះស្រាយដែលផ្អែកលើទិន្នន័យ ដោយប្រើ Java, Spring Boot, Next.js, TypeScript និងឧបករណ៍ Frontend ស្តង់ដារ។",
-        "ខ្ញុំបានបញ្ចប់ថ្នាក់បរិញ្ញាបត្រវិទ្យាសាស្ត្រកុំព្យូទ័រ ពីសាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ និងបានចូលរួមក្នុងកម្មវិធីបណ្ដុះបណ្ដាល Software Expert Training Program នៅ Korea Software HRD Center។ ខ្ញុំផ្តោតលើស្ថាបត្យកម្មកូដដែលបានរចនាយ៉ាងស្អាត, Backend ដែលអាចធ្វើមាត្រដ្ឋានបាន, និងផ្ទៃប្រើប្រាស់ដែលងាយស្រួលសម្រាប់អ្នកប្រើ។",
-        "នៅ KOSIGN ខ្ញុំរចនា និងអភិវឌ្ឍលក្ខណៈពិសេស Full Stack សម្រាប់ប្រព័ន្ធ B2B Fin-Tech និង e-Finance, ភ្ជាប់សេវាកម្ម Backend ជាមួយ PostgreSQL, JWT, និង API ភាគីទីបី ខណៈពេលដែលផ្តល់នូវផ្ទៃ front-end ដែលឆ្លើយតបលើ React និង Next.js។ ខ្ញុំមានទំនុកចិត្តក្នុងការដំណើរការនៅក្នុងភាសាអង់គ្លេស និងខ្មែរ ហើយមានការស្រលាញ់ក្នុងការដោះស្រាយបញ្ហាលើបច្ចេកវិទ្យា ដោយទំនាក់ទំនង និងសហការដែលល្អ។",
+        "ខ្ញុំជាអ្នកអភិវឌ្ឍ Full Stack ដែលមានបទពិសោធន៍ជាក់ស្តែងជាង 2 ឆ្នាំ ក្នុងការបង្កើត និងថែទាំកម្មវិធីគេហទំព័រ RESTful API និងដំណោះស្រាយដែលផ្អែកលើទិន្នន័យ នៅក្នុងបរិយាកាស B2B Fintech។ ខ្ញុំធ្វើការពេញលេញចាប់ពីដើមដល់ចប់ ជាមួយ Java, Spring Boot, microservices និង GraphQL API នៅខាងក្រោយ និង Next.js, TypeScript នៅខាងមុខ។",
+        "ខ្ញុំខ្លាំងផ្នែកការភ្ជាប់ប្រព័ន្ធ (system integration) និងការរចនា API Gateway — ភ្ជាប់សេវាកម្មខាងក្នុងជាមួយប្រព័ន្ធហិរញ្ញវត្ថុភាគីទីបីតាម REST និង GraphQL ដោយប្រើ Spring Cloud, Eureka និង OpenFeign ដើម្បីរក្សាលំហូរការទូទាត់ និងប្រាក់កម្ចីឱ្យនៅតែដំណើរការ ទោះបីសេវាកម្មណាមួយយឺតក៏ដោយ។ ខ្ញុំអាចតាមដាន និងដោះស្រាយកំហុសពេញមួយ stack ដើម្បីរក្សាប្រព័ន្ធផលិតកម្មឱ្យមានស្ថេរភាព។",
+        "នៅ KOSIGN — ក្រុមហ៊ុនមួយរបស់ Webcash Group ដែលបង្កើតដំណោះស្រាយ B2B Fintech, e-Finance និង Global IT Outsourcing — ខ្ញុំបានបង្កើតសេវាចេញវិក្កយបត្រ និងប្រមូលប្រាក់ដោយស្វ័យប្រវត្តិតាម KHQR ការផ្ដល់ និងសងប្រាក់កម្ចីឌីជីថល និងសេវាចេញវិក្កយបត្រអេឡិចត្រូនិកភ្ជាប់ជាមួយ GDT ដោយធានាសុវត្ថិភាពជាមួយ Spring Security, JWT និងការអនុញ្ញាតតាមតួនាទី។ ខ្ញុំបានបញ្ចប់ថ្នាក់បរិញ្ញាបត្រវិទ្យាសាស្ត្រកុំព្យូទ័រ ពីសាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ និងបានបញ្ចប់ការបណ្ដុះបណ្ដាលចំនួន 864 ម៉ោង នៅ Korea Software HRD Center។ ខ្ញុំអាចប្រើភាសាខ្មែរ (ភាសាកំណើត) និងភាសាអង់គ្លេស (កម្រិតខ្ពស់)។",
       ],
     },
     skills: {
@@ -364,51 +367,49 @@ export const content: Record<Locale, Content> = {
       title: "អ្វីដែលខ្ញុំប្រើប្រាស់",
       groups: [
         {
-          title: "Frontend",
-          items: [
-            "HTML5 & CSS3",
-            "JavaScript",
-            "TypeScript",
-            "React.js",
-            "Next.js",
-            "Tailwind CSS",
-            "jQuery",
-          ],
+          title: "ការអភិវឌ្ឍ និងភ្ជាប់ API",
+          items: ["REST", "GraphQL", "OpenFeign", "Swagger / OpenAPI", "Postman"],
         },
         {
-          title: "Backend",
+          title: "API Gateway & Microservices",
           items: [
-            "Java 17-21",
-            "Spring Boot",
-            "Spring Security",
-            "RBAC",
-            "JWT & OAuth2",
-            "Spring Data JPA",
-            "Hibernate",
-          ],
-        },
-        {
-          title: "Database & API Design",
-          items: [
-            "SQL",
-            "MySQL",
-            "PostgreSQL",
-            "ERD Design",
-            "RESTful & SOAP API Design",
-          ],
-        },
-        {
-          title: "Microservices",
-          items: [
+            "Spring Cloud Gateway",
             "Eureka",
-            "API Gateway",
-            "Spring Cloud OpenFeign",
-            "Load Balancer",
+            "Load Balancing",
+            "Timeouts & Fallbacks",
           ],
         },
         {
-          title: "DevOps & Tools",
-          items: ["Git", "Docker", "Postman", "Swagger / OpenAPI", "AWS", "Jira", "Confluence"],
+          title: "Java & Spring Boot",
+          items: ["Java", "Spring Boot", "Spring MVC", "Spring Data JPA", "Hibernate"],
+        },
+        {
+          title: "សុវត្ថិភាព",
+          items: ["Spring Security", "JWT", "OAuth2", "RBAC"],
+        },
+        {
+          title: "មូលដ្ឋានទិន្នន័យ Relational",
+          items: ["PostgreSQL", "ERD Design", "SQL Tuning", "Data Validation"],
+        },
+        {
+          title: "ការគាំទ្រផលិតកម្ម & ការដាក់ឱ្យប្រើប្រាស់",
+          items: ["Docker", "GitLab CI/CD", "Spring Boot Actuator", "Zabbix"],
+        },
+        {
+          title: "Git & ការងារជាក្រុម",
+          items: ["Git", "GitHub", "GitLab", "Merge Requests", "Code Review"],
+        },
+        {
+          title: "ផ្នែកខាងមុខ & ការធ្វើគំរូ",
+          items: [
+            "React",
+            "Next.js",
+            "TypeScript",
+            "Tailwind CSS",
+            "Shadcn/UI",
+            "MUI",
+            "Vite",
+          ],
         },
       ],
     },
@@ -422,16 +423,12 @@ export const content: Record<Locale, Content> = {
       websiteLabel: "វេបសាយ",
       items: [
         {
-          title: "ប្រព័ន្ធអេឡិចត្រូនិកផ្សារ",
+          title: "We Invoice",
           description:
-            "ដំណោះស្រាយ e-commerce ជា full-stack ដែលប្រើ Next.js ជាផ្នែក frontend និង Spring Boot ជាផ្នែក backend។ មានសុវត្ថិភាព JWT, ការគ្រប់គ្រងផលិតផល, កន្ត្រង់ទំនិញ, និងផ្ទាំងគ្រប់គ្រងអ្នកគ្រប់គ្រង។",
-          stack: ["Next.js", "Spring Boot", "PostgreSQL", "Docker", "JWT", "Redis"],
-        },
-        {
-          title: "ប្រព័ន្ធគ្រប់គ្រងបណ្ណាល័យ",
-          description:
-            "កម្មវិធីគ្រប់គ្រងបណ្ណាល័យទំនើបដែលមាន frontend ជាមួយ React និង backend ជាមួយ Spring Boot។ រួមបញ្ចូល CRUD, pagination, និង UI ដែលឆ្លើយតប។",
-          stack: ["React", "Tailwind CSS", "Spring Boot", "MySQL", "REST API"],
+            "គម្រោងនៅ KOSIGN — វេទិកាចេញវិក្កយបត្រអេឡិចត្រូនិក សម្រាប់ចេញ តាមដាន និងគ្រប់គ្រងវិក្កយបត្រភ្ជាប់ជាមួយ GDT ពីដើមដល់ចប់។",
+          stack: ["Next.js", "Spring Boot", "PostgreSQL", "TypeScript", "Tailwind CSS"],
+          demoUrl: "https://dev.we-invoice.com",
+          githubUrl: null,
         },
         {
           title: "WeBill365",
@@ -439,6 +436,14 @@ export const content: Record<Locale, Content> = {
             "គម្រោងផ្ទាល់ខ្លួន — ដំណោះស្រាយសម្រាប់ចេញវិក្កយបត្រ និងប្រមូលការទូទាត់។ ផ្លាស់ប្តូរវិធីដែលអាជីវកម្មប្រមូលការទូទាត់ ជាមួយនឹងវេទិកាតែមួយសម្រាប់គ្រប់គ្រង ធ្វើស្វ័យប្រវត្តិកម្ម និងតាមដានរាល់ប្រតិបត្តិការ៖ ការបង្កើតវិក្កយបត្រច្រើនដោយស្វ័យប្រវត្តិ ការទូទាត់តាម KHQR ការតាមដានការទូទាត់ និងការជូនដំណឹងភ្លាមៗ ព្រមទាំងការជូនដំណឹងតាម SMS និង Telegram។",
           stack: ["Next.js", "Spring Boot", "PostgreSQL", "TypeScript", "Tailwind CSS"],
           demoUrl: "https://webill365.com/kh",
+          githubUrl: null,
+        },
+        {
+          title: "Cafe Merchant",
+          description:
+            "គម្រោងនៅ KOSIGN — វេទិកាសម្រាប់អាជីវកម្មកាហ្វេ ដើម្បីគ្រប់គ្រងការបញ្ជាទិញ និងការទូទាត់។",
+          stack: ["Next.js", "Spring Boot", "PostgreSQL", "TypeScript", "Tailwind CSS"],
+          demoUrl: "https://cafe-merchant.kosign.dev",
           githubUrl: null,
         },
         {
@@ -468,19 +473,20 @@ export const content: Record<Locale, Content> = {
       educationTitle: "ការសិក្សា",
       jobs: [
         {
-          role: "Web Developer / Full Stack Developer",
+          role: "Web Developer (Full Stack)",
           company: "KOSIGN (Cambodia) Investment Co., Ltd.",
           description:
-            "ក្រុមហ៊ុននេះមានឯកទេសខាង B2B Fin-Tech, e-Finance និង Global IT Outsourcing។",
+            "ក្រុមហ៊ុនមួយរបស់ Webcash Group ដែលបង្កើតដំណោះស្រាយ B2B Fintech, e-Finance និង Global IT Outsourcing រួមទាំងការភ្ជាប់ប្រព័ន្ធ និងហេដ្ឋារចនាសម្ព័ន្ធធនាគារ។",
           logo: "/image/KOSIGN-removebg-preview.png",
-          period: "សីហា 2024 — បច្ចុប្បន្ន",
+          period: "2024 — បច្ចុប្បន្ន",
           points: [
-            "បានបង្កើតកម្មវិធី Backend និង RESTful API ដោយ Spring Boot និង Spring Data JPA សម្រាប់ដំណើរការទិន្នន័យ, JWT authentication, និង role-based authorization ដែលភ្ជាប់ជាមួយ PostgreSQL។",
-            "បានបង្កើត និងថែទាំប្រព័ន្ធ Backend សក្ដី microservice ដោយប្រើ Spring Cloud, Eureka, API Gateway, និង OpenFeign សម្រាប់ service discovery, routing, និង inter-service communication។",
-            "បានសហការជាមួយក្រុមការងារឆ្លងផ្នែកដើម្បីរចនាដំណោះស្រាយ, ភ្ជាប់សេវាកម្ម Frontend និង Backend, និងបញ្ជូនមុខងារសម្រាប់អ្នកប្រើប្រាស់ក្នុងអាជីវកម្ម។",
-            "បានបង្កើតផ្ទៃគេហទំព័រដែលឆ្លើយតប និងងាយប្រើ ដោយ Next.js, TypeScript, HTML5, CSS3, និង Tailwind CSS។",
-            "បាន Containerize សេវាកម្មដោយ Docker និងប្រើ Git, GitLab សម្រាប់ source control, versioning, និង coordination នៃ release។",
-            "បានធ្វើការធ្វើតេស្ត API ដោយ Postman និងរក្សាគុណភាពកម្មវិធីតាមរយៈ debugging, code review, និងការកែលម្អជាបន្ត។",
+            "បានភ្ជាប់សេវាកម្មខាងក្នុងជាមួយប្រព័ន្ធហិរញ្ញវត្ថុភាគីទីបី តាមរយៈ REST និង GraphQL API ដោយទាញយកតែទិន្នន័យដែលអេក្រង់នីមួយៗត្រូវការ។",
+            "បានបង្កើតសេវាកម្មក្នុងស្ថាបត្យកម្ម microservices ជាមួយ Spring Cloud, Eureka, API Gateway routing និង OpenFeign ព្រមទាំងបន្ថែម timeout និង fallback ដើម្បីកុំឱ្យសេវាកម្មណាមួយដែលយឺតបញ្ឈប់លំហូរការទូទាត់ ឬប្រាក់កម្ចី។",
+            "បានផ្ដល់មុខងារហិរញ្ញវត្ថុដែលគោរពច្បាប់៖ ការចេញវិក្កយបត្រ និងប្រមូលប្រាក់ដោយស្វ័យប្រវត្តិតាម KHQR ការផ្ដល់ និងសងប្រាក់កម្ចីឌីជីថល និងការចេញវិក្កយបត្រអេឡិចត្រូនិកភ្ជាប់ជាមួយ GDT។",
+            "បានធានាសុវត្ថិភាពសេវាកម្មដោយ Spring Security, JWT និងការអនុញ្ញាតតាមតួនាទី ព្រមទាំងឆ្លងកាត់ការត្រួតពិនិត្យកូដតាមស្តង់ដារ K-Fintech របស់ Webcash Group។",
+            "បានរចនា schema និង ERD សម្រាប់ PostgreSQL ព្រមទាំងកែលម្អ SQL ដើម្បីរក្សាទិន្នន័យវិក្កយបត្រ និងការទូទាត់ឱ្យលឿន និងត្រឹមត្រូវ។",
+            "បានដាក់ឱ្យប្រើប្រាស់ដោយ Docker និង GitLab CI/CD តាមដានដោយ Spring Boot Actuator និង Zabbix ព្រមទាំងតាមដានប្រតិបត្តិការបរាជ័យ ដើម្បីដោះស្រាយបញ្ហាបានលឿន។",
+            "បានសរសេរឯកសារ Swagger/OpenAPI មុនពេលអភិវឌ្ឍ ដើម្បីឱ្យក្រុមការងារភាគីនានាអាចភ្ជាប់ប្រព័ន្ធស្របគ្នាបាន ព្រមទាំងសាកល្បង API ដោយ Postman។",
           ],
         },
       ],
