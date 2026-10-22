@@ -24,7 +24,7 @@ export default function Projects() {
         </p>
       </div>
 
-      <div className="mx-auto mt-10 grid max-w-[780px] gap-5 sm:grid-cols-2">
+      <div className="mx-auto mt-10 grid max-w-[860px] gap-5 sm:grid-cols-2">
         {projects.map((project, index) => (
           <Reveal key={project.title} delay={index * 80}>
             <Link
