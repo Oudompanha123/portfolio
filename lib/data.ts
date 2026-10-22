@@ -235,7 +235,7 @@ export const content: Record<Locale, Content> = {
         {
           title: "Cafe Merchant",
           description:
-            "A side project at KOSIGN — a merchant-facing platform for café businesses to manage orders and payments.",
+            "A side project at KOSIGN — a Foodpanda-style ordering platform for café merchants, where customers browse the menu and order online while the merchant manages incoming orders and payments in real time.",
           stack: ["Next.js", "Spring Boot", "PostgreSQL", "TypeScript", "Tailwind CSS"],
           demoUrl: "https://cafe-merchant.kosign.dev",
           githubUrl: null,
@@ -441,7 +441,7 @@ export const content: Record<Locale, Content> = {
         {
           title: "Cafe Merchant",
           description:
-            "គម្រោងនៅ KOSIGN — វេទិកាសម្រាប់អាជីវកម្មកាហ្វេ ដើម្បីគ្រប់គ្រងការបញ្ជាទិញ និងការទូទាត់។",
+            "គម្រោងនៅ KOSIGN — វេទិកាកម្មង់អាហារបែប Foodpanda សម្រាប់ហាងកាហ្វេ ដែលអតិថិជនអាចមើលមីនុយ និងកម្មង់តាមអនឡាញ ខណៈដែលហាងគ្រប់គ្រងការបញ្ជាទិញ និងការទូទាត់ជាក់ស្ដែង។",
           stack: ["Next.js", "Spring Boot", "PostgreSQL", "TypeScript", "Tailwind CSS"],
           demoUrl: "https://cafe-merchant.kosign.dev",
           githubUrl: null,
