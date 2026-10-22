@@ -72,6 +72,8 @@ export type Content = {
       title: string;
       description: string;
       stack: string[];
+      /** Screenshot shown at the top of the project card, when set. */
+      image?: string;
       /** Overrides the default "Live Demo" link (#contact) when set. */
       demoUrl?: string;
       /** Overrides the default GitHub profile link; pass null to hide the GitHub button entirely. */
@@ -218,6 +220,7 @@ export const content: Record<Locale, Content> = {
       items: [
         {
           title: "We Invoice",
+          image: "/image/we-invoice-preview.png",
           description:
             "A side project at KOSIGN — a seamless e-invoicing API that connects an existing ERP system directly to Cambodia's GDT for fast, compliant tax reporting. Built for scalability and security: real-time automated validation, guaranteed GDT compliance, and instant tax submission in place of manual, error-prone processes.",
           stack: ["Next.js", "Spring Boot", "PostgreSQL", "TypeScript", "Tailwind CSS"],
@@ -227,6 +230,7 @@ export const content: Record<Locale, Content> = {
         },
         {
           title: "WeBill365",
+          image: "/image/webill365-preview.png",
           description:
             "A personal side project — a solution for billing & payment collection. Transform how a business collects payments with a centralized platform to manage, automate, and track every transaction: automated bulk bill creation, KHQR payment collection, real-time payment tracking & alerts, and SMS & Telegram notifications.",
           stack: ["Next.js", "Spring Boot", "PostgreSQL", "TypeScript", "Tailwind CSS"],
@@ -245,6 +249,7 @@ export const content: Record<Locale, Content> = {
         },
         {
           title: "Coc Docs Platform (CDP)",
+          image: "/image/cdp-dashboard-preview.png",
           description:
             "A personal side project — one workspace for every product's documentation. Tracks what's written, what's missing, and who's behind it across every product a team ships, with per-product knowledge bases, content-status tracking, and team role management.",
           stack: ["Next.js", "Spring Boot", "PostgreSQL", "TypeScript", "Tailwind CSS"],
@@ -427,6 +432,7 @@ export const content: Record<Locale, Content> = {
       items: [
         {
           title: "We Invoice",
+          image: "/image/we-invoice-preview.png",
           description:
             "គម្រោងនៅ KOSIGN — API ចេញវិក្កយបត្រអេឡិចត្រូនិកដ៏ងាយស្រួល ដែលភ្ជាប់ប្រព័ន្ធ ERP ដែលមានស្រាប់ដោយផ្ទាល់ទៅកាន់ GDT កម្ពុជា សម្រាប់ការរាយការណ៍ពន្ធដ៏លឿន និងត្រឹមត្រូវតាមច្បាប់។ សាងសង់សម្រាប់ការពង្រីក និងសុវត្ថិភាព៖ ការផ្ទៀងផ្ទាត់ដោយស្វ័យប្រវត្តិភ្លាមៗ ការធានាគោរពច្បាប់ GDT ១០០% និងការដាក់ស្នើពន្ធភ្លាមៗជំនួសដំណើរការដោយដៃដែលងាយមានកំហុស។",
           stack: ["Next.js", "Spring Boot", "PostgreSQL", "TypeScript", "Tailwind CSS"],
@@ -436,6 +442,7 @@ export const content: Record<Locale, Content> = {
         },
         {
           title: "WeBill365",
+          image: "/image/webill365-preview.png",
           description:
             "គម្រោងផ្ទាល់ខ្លួន — ដំណោះស្រាយសម្រាប់ចេញវិក្កយបត្រ និងប្រមូលការទូទាត់។ ផ្លាស់ប្តូរវិធីដែលអាជីវកម្មប្រមូលការទូទាត់ ជាមួយនឹងវេទិកាតែមួយសម្រាប់គ្រប់គ្រង ធ្វើស្វ័យប្រវត្តិកម្ម និងតាមដានរាល់ប្រតិបត្តិការ៖ ការបង្កើតវិក្កយបត្រច្រើនដោយស្វ័យប្រវត្តិ ការទូទាត់តាម KHQR ការតាមដានការទូទាត់ និងការជូនដំណឹងភ្លាមៗ ព្រមទាំងការជូនដំណឹងតាម SMS និង Telegram។",
           stack: ["Next.js", "Spring Boot", "PostgreSQL", "TypeScript", "Tailwind CSS"],
@@ -454,6 +461,7 @@ export const content: Record<Locale, Content> = {
         },
         {
           title: "Coc Docs Platform (CDP)",
+          image: "/image/cdp-dashboard-preview.png",
           description:
             "គម្រោងផ្ទាល់ខ្លួន — កន្លែងធ្វើការតែមួយសម្រាប់ឯកសារផលិតផលទាំងអស់។ តាមដានអ្វីដែលបានសរសេរ អ្វីដែលខ្វះ និងអ្នកទទួលខុសត្រូវ លើផលិតផលនីមួយៗ ដោយមានមូលដ្ឋានចំណេះដឹងសម្រាប់ផលិតផលនីមួយៗ ការតាមដានស្ថានភាពមាតិកា និងការគ្រប់គ្រងតួនាទីក្រុម។",
           stack: ["Next.js", "Spring Boot", "PostgreSQL", "TypeScript", "Tailwind CSS"],

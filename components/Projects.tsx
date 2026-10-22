@@ -69,6 +69,17 @@ export default function Projects() {
           return (
             <Reveal key={project.title} delay={index * 80}>
               <article className="group flex h-full flex-col rounded-[1.4rem] border border-border bg-surface p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-accent">
+                {project.image && (
+                  <div className="-mx-6 -mt-6 mb-5 overflow-hidden rounded-t-[1.4rem] border-b border-border">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full"
+                    />
+                  </div>
+                )}
+
                 <h3 className="relative z-10 mb-3 text-xl font-semibold text-ink">
                   {project.title.split("\n").map((line) => (
                     <span key={line} className="block">
