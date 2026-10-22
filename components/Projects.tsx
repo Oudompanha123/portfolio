@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useLocale } from "@/lib/i18n";
-import { GitHubIcon, ExternalLinkIcon, GlobeIcon } from "./icons/ProjectIcons";
+import { GitHubIcon } from "./icons/ProjectIcons";
 import Reveal from "./Reveal";
 
 export default function Projects() {
@@ -24,100 +24,54 @@ export default function Projects() {
         </p>
       </div>
 
-      <div className="mx-auto mt-10 grid max-w-[900px] gap-6 sm:grid-cols-2">
-        {projects.map((project, index) => {
-          const githubHref =
-            project.githubUrl === null
-              ? null
-              : project.githubUrl ?? "https://github.com/Oudompanha123";
-          const demoHref = project.demoUrl ?? "#contact";
+      <div className="mx-auto mt-10 grid max-w-[900px] gap-5 sm:grid-cols-2">
+        {projects.map((project, index) => (
+          <Reveal key={project.title} delay={index * 80}>
+            <Link
+              href={`/projects/${project.slug}`}
+              className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-accent"
+            >
+              {project.image && (
+                <div className="aspect-[16/7] overflow-hidden border-b border-border bg-bg">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="h-full w-full object-cover object-top"
+                  />
+                </div>
+              )}
 
-          return (
-            <Reveal key={project.title} delay={index * 80}>
-              <article className="group flex h-full flex-col rounded-[1.4rem] border border-border bg-surface p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-accent">
-                {project.image && (
-                  <div className="-mx-6 -mt-6 mb-5 aspect-[16/10] overflow-hidden rounded-t-[1.4rem] border-b border-border bg-bg">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="h-full w-full object-cover object-top"
-                    />
-                  </div>
-                )}
-
-                <h3 className="relative z-10 mb-3 text-xl font-semibold text-ink">
-                  {project.title.split("\n").map((line) => (
-                    <span key={line} className="block">
-                      {line}
-                    </span>
-                  ))}
+              <div className="flex flex-1 flex-col p-5">
+                <h3 className="text-base font-semibold text-ink">
+                  {project.title}
                 </h3>
 
-                <p className="mt-4 line-clamp-3 flex-1 text-[0.96rem] leading-[1.7] text-muted">
+                <p className="mt-2 line-clamp-2 flex-1 text-sm leading-relaxed text-muted">
                   {project.description}
                 </p>
 
-                <Link
-                  href={`/projects/${project.slug}`}
-                  className="mt-3 inline-flex w-fit items-center gap-1.5 text-sm font-medium text-accent transition-colors hover:text-ink"
-                >
-                  {t.projects.viewDetails}
-                  <span aria-hidden className="transition-transform group-hover:translate-x-0.5">
-                    &rarr;
-                  </span>
-                </Link>
-
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {project.stack.map((item) => (
+                <div className="mt-3 flex flex-wrap gap-1.5">
+                  {project.stack.slice(0, 3).map((item) => (
                     <span
                       key={item}
-                      className="inline-flex items-center rounded-full border border-border bg-bg px-2.5 py-1 text-xs font-medium text-ink"
+                      className="inline-flex items-center rounded-full border border-border bg-bg px-2 py-0.5 text-[0.7rem] font-medium text-ink"
                     >
                       {item}
                     </span>
                   ))}
                 </div>
 
-                <div className="mt-6 flex items-center gap-5 border-t border-border pt-4 text-sm font-medium text-muted">
-                  {githubHref && (
-                    <a
-                      href={githubHref}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-2 transition-colors hover:text-ink"
-                    >
-                      <GitHubIcon />
-                      <span>{t.projects.githubLabel}</span>
-                    </a>
-                  )}
-
-                  <a
-                    href={demoHref}
-                    target={demoHref.startsWith("http") ? "_blank" : undefined}
-                    rel={demoHref.startsWith("http") ? "noreferrer" : undefined}
-                    className="inline-flex items-center gap-2 transition-colors hover:text-ink"
-                  >
-                    <ExternalLinkIcon />
-                    <span>{t.projects.demoLabel}</span>
-                  </a>
-
-                  {project.websiteUrl && (
-                    <a
-                      href={project.websiteUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-2 transition-colors hover:text-ink"
-                    >
-                      <GlobeIcon />
-                      <span>{t.projects.websiteLabel}</span>
-                    </a>
-                  )}
-                </div>
-              </article>
-            </Reveal>
-          );
-        })}
+                <span className="mt-4 inline-flex w-fit items-center gap-1.5 text-sm font-medium text-accent transition-colors group-hover:text-ink">
+                  {t.projects.viewDetails}
+                  <span aria-hidden className="transition-transform group-hover:translate-x-0.5">
+                    &rarr;
+                  </span>
+                </span>
+              </div>
+            </Link>
+          </Reveal>
+        ))}
       </div>
 
       <div className="mt-12 flex justify-center">
