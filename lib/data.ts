@@ -189,7 +189,7 @@ export const content: Record<Locale, Content> = {
         },
         {
           title: "Relational Databases",
-          items: ["PostgreSQL", "ERD Design", "SQL Tuning", "Data Validation"],
+          items: ["PostgreSQL", "Oracle Database", "ERD Design", "SQL Tuning", "Data Validation"],
         },
         {
           title: "Production Support & Deployment",
@@ -407,7 +407,7 @@ export const content: Record<Locale, Content> = {
         },
         {
           title: "មូលដ្ឋានទិន្នន័យ Relational",
-          items: ["PostgreSQL", "ERD Design", "SQL Tuning", "Data Validation"],
+          items: ["PostgreSQL", "Oracle Database", "ERD Design", "SQL Tuning", "Data Validation"],
         },
         {
           title: "ការគាំទ្រផលិតកម្ម & ការដាក់ឱ្យប្រើប្រាស់",
