@@ -219,7 +219,7 @@ export const content: Record<Locale, Content> = {
         {
           title: "We Invoice",
           description:
-            "A side project at KOSIGN — an e-invoicing platform for issuing, tracking, and managing GDT-integrated invoices end to end.",
+            "A side project at KOSIGN — a seamless e-invoicing API that connects an existing ERP system directly to Cambodia's GDT for fast, compliant tax reporting. Built for scalability and security: real-time automated validation, guaranteed GDT compliance, and instant tax submission in place of manual, error-prone processes.",
           stack: ["Next.js", "Spring Boot", "PostgreSQL", "TypeScript", "Tailwind CSS"],
           demoUrl: "https://dev.we-invoice.com",
           githubUrl: null,
@@ -425,7 +425,7 @@ export const content: Record<Locale, Content> = {
         {
           title: "We Invoice",
           description:
-            "គម្រោងនៅ KOSIGN — វេទិកាចេញវិក្កយបត្រអេឡិចត្រូនិក សម្រាប់ចេញ តាមដាន និងគ្រប់គ្រងវិក្កយបត្រភ្ជាប់ជាមួយ GDT ពីដើមដល់ចប់។",
+            "គម្រោងនៅ KOSIGN — API ចេញវិក្កយបត្រអេឡិចត្រូនិកដ៏ងាយស្រួល ដែលភ្ជាប់ប្រព័ន្ធ ERP ដែលមានស្រាប់ដោយផ្ទាល់ទៅកាន់ GDT កម្ពុជា សម្រាប់ការរាយការណ៍ពន្ធដ៏លឿន និងត្រឹមត្រូវតាមច្បាប់។ សាងសង់សម្រាប់ការពង្រីក និងសុវត្ថិភាព៖ ការផ្ទៀងផ្ទាត់ដោយស្វ័យប្រវត្តិភ្លាមៗ ការធានាគោរពច្បាប់ GDT ១០០% និងការដាក់ស្នើពន្ធភ្លាមៗជំនួសដំណើរការដោយដៃដែលងាយមានកំហុស។",
           stack: ["Next.js", "Spring Boot", "PostgreSQL", "TypeScript", "Tailwind CSS"],
           demoUrl: "https://dev.we-invoice.com",
           githubUrl: null,
