@@ -68,7 +68,11 @@ export type Content = {
     githubLabel: string;
     demoLabel: string;
     websiteLabel: string;
+    viewDetails: string;
+    backToProjects: string;
     items: {
+      /** URL slug for the project's detail page (/projects/[slug]). Same across locales. */
+      slug: string;
       title: string;
       description: string;
       stack: string[];
@@ -217,9 +221,12 @@ export const content: Record<Locale, Content> = {
       githubLabel: "GitHub",
       demoLabel: "Live Demo",
       websiteLabel: "Website",
+      viewDetails: "View details",
+      backToProjects: "Back to projects",
       items: [
         {
           title: "We Invoice",
+          slug: "we-invoice",
           image: "/image/we-invoice-preview.png",
           description:
             "A side project at KOSIGN — a seamless e-invoicing API that connects an existing ERP system directly to Cambodia's GDT for fast, compliant tax reporting. Built for scalability and security: real-time automated validation, guaranteed GDT compliance, and instant tax submission in place of manual, error-prone processes.",
@@ -230,6 +237,7 @@ export const content: Record<Locale, Content> = {
         },
         {
           title: "WeBill365",
+          slug: "webill365",
           image: "/image/webill365-preview.png",
           description:
             "A personal side project — a solution for billing & payment collection. Transform how a business collects payments with a centralized platform to manage, automate, and track every transaction: automated bulk bill creation, KHQR payment collection, real-time payment tracking & alerts, and SMS & Telegram notifications.",
@@ -240,6 +248,7 @@ export const content: Record<Locale, Content> = {
         },
         {
           title: "Cafe Merchant",
+          slug: "cafe-merchant",
           description:
             "A side project at KOSIGN — a Foodpanda-style ordering platform for café merchants, where customers browse the menu and order online while the merchant manages incoming orders and payments in real time.",
           stack: ["Next.js", "Spring Boot", "PostgreSQL", "TypeScript", "Tailwind CSS"],
@@ -249,6 +258,7 @@ export const content: Record<Locale, Content> = {
         },
         {
           title: "Coc Docs Platform (CDP)",
+          slug: "coc-docs-platform",
           image: "/image/cdp-dashboard-preview.png",
           description:
             "A personal side project — one workspace for every product's documentation. Tracks what's written, what's missing, and who's behind it across every product a team ships, with per-product knowledge bases, content-status tracking, and team role management.",
@@ -429,9 +439,12 @@ export const content: Record<Locale, Content> = {
       githubLabel: "GitHub",
       demoLabel: "សាកល្បង Live",
       websiteLabel: "វេបសាយ",
+      viewDetails: "មើលលម្អិត",
+      backToProjects: "ត្រឡប់ទៅគម្រោង",
       items: [
         {
           title: "We Invoice",
+          slug: "we-invoice",
           image: "/image/we-invoice-preview.png",
           description:
             "គម្រោងនៅ KOSIGN — API ចេញវិក្កយបត្រអេឡិចត្រូនិកដ៏ងាយស្រួល ដែលភ្ជាប់ប្រព័ន្ធ ERP ដែលមានស្រាប់ដោយផ្ទាល់ទៅកាន់ GDT កម្ពុជា សម្រាប់ការរាយការណ៍ពន្ធដ៏លឿន និងត្រឹមត្រូវតាមច្បាប់។ សាងសង់សម្រាប់ការពង្រីក និងសុវត្ថិភាព៖ ការផ្ទៀងផ្ទាត់ដោយស្វ័យប្រវត្តិភ្លាមៗ ការធានាគោរពច្បាប់ GDT ១០០% និងការដាក់ស្នើពន្ធភ្លាមៗជំនួសដំណើរការដោយដៃដែលងាយមានកំហុស។",
@@ -442,6 +455,7 @@ export const content: Record<Locale, Content> = {
         },
         {
           title: "WeBill365",
+          slug: "webill365",
           image: "/image/webill365-preview.png",
           description:
             "គម្រោងផ្ទាល់ខ្លួន — ដំណោះស្រាយសម្រាប់ចេញវិក្កយបត្រ និងប្រមូលការទូទាត់។ ផ្លាស់ប្តូរវិធីដែលអាជីវកម្មប្រមូលការទូទាត់ ជាមួយនឹងវេទិកាតែមួយសម្រាប់គ្រប់គ្រង ធ្វើស្វ័យប្រវត្តិកម្ម និងតាមដានរាល់ប្រតិបត្តិការ៖ ការបង្កើតវិក្កយបត្រច្រើនដោយស្វ័យប្រវត្តិ ការទូទាត់តាម KHQR ការតាមដានការទូទាត់ និងការជូនដំណឹងភ្លាមៗ ព្រមទាំងការជូនដំណឹងតាម SMS និង Telegram។",
@@ -452,6 +466,7 @@ export const content: Record<Locale, Content> = {
         },
         {
           title: "Cafe Merchant",
+          slug: "cafe-merchant",
           description:
             "គម្រោងនៅ KOSIGN — វេទិកាកម្មង់អាហារបែប Foodpanda សម្រាប់ហាងកាហ្វេ ដែលអតិថិជនអាចមើលមីនុយ និងកម្មង់តាមអនឡាញ ខណៈដែលហាងគ្រប់គ្រងការបញ្ជាទិញ និងការទូទាត់ជាក់ស្ដែង។",
           stack: ["Next.js", "Spring Boot", "PostgreSQL", "TypeScript", "Tailwind CSS"],
@@ -461,6 +476,7 @@ export const content: Record<Locale, Content> = {
         },
         {
           title: "Coc Docs Platform (CDP)",
+          slug: "coc-docs-platform",
           image: "/image/cdp-dashboard-preview.png",
           description:
             "គម្រោងផ្ទាល់ខ្លួន — កន្លែងធ្វើការតែមួយសម្រាប់ឯកសារផលិតផលទាំងអស់។ តាមដានអ្វីដែលបានសរសេរ អ្វីដែលខ្វះ និងអ្នកទទួលខុសត្រូវ លើផលិតផលនីមួយៗ ដោយមានមូលដ្ឋានចំណេះដឹងសម្រាប់ផលិតផលនីមួយៗ ការតាមដានស្ថានភាពមាតិកា និងការគ្រប់គ្រងតួនាទីក្រុម។",

@@ -7,6 +7,8 @@ import {
 } from "next/font/google";
 import { site, content } from "@/lib/data";
 import { LocaleProvider } from "@/lib/i18n";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const display = Space_Grotesk({
@@ -75,7 +77,11 @@ export default function RootLayout({
       <body
         className={`${display.variable} ${sans.variable} ${mono.variable} ${khmer.variable} font-sans`}
       >
-        <LocaleProvider>{children}</LocaleProvider>
+        <LocaleProvider>
+          <Nav />
+          {children}
+          <Footer />
+        </LocaleProvider>
       </body>
     </html>
   );

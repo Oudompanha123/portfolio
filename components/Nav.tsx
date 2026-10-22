@@ -42,9 +42,9 @@ export default function Nav() {
   }, [open]);
 
   const links = [
-    { href: "#about", label: t.nav.about },
-    { href: "#skills", label: t.nav.skills },
-    { href: "#work", label: t.nav.experience },
+    { href: "/#about", label: t.nav.about },
+    { href: "/#skills", label: t.nav.skills },
+    { href: "/#work", label: t.nav.experience },
   ];
 
   // First name only, for a compact wordmark.
@@ -59,7 +59,7 @@ export default function Nav() {
         className="mx-auto flex max-w-content items-center justify-between px-6 py-4 sm:px-8"
       >
         <a
-          href="#top"
+          href="/#top"
           onClick={() => setOpen(false)}
           className="group flex items-center gap-2.5"
         >
@@ -93,7 +93,7 @@ export default function Nav() {
           <LangToggle />
           <ThemeToggle />
           <motion.a
-            href="#contact"
+            href="/#contact"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.97 }}
             className="btn-gradient rounded-full px-5 py-2.5 text-sm"
@@ -217,7 +217,7 @@ export default function Nav() {
 
               <div className="border-t border-border px-6 py-5">
                 <a
-                  href="#contact"
+                  href="/#contact"
                   onClick={() => setOpen(false)}
                   className="btn-gradient block rounded-full px-5 py-3 text-center text-sm"
                 >
