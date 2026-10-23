@@ -221,7 +221,7 @@ export const content: Record<Locale, Content> = {
       githubLabel: "GitHub",
       demoLabel: "Live Demo",
       websiteLabel: "Website",
-      viewDetails: "View details",
+      viewDetails: "Details",
       backToProjects: "Back to projects",
       items: [
         {
@@ -440,7 +440,7 @@ export const content: Record<Locale, Content> = {
       githubLabel: "GitHub",
       demoLabel: "សាកល្បង Live",
       websiteLabel: "វេបសាយ",
-      viewDetails: "មើលលម្អិត",
+      viewDetails: "លម្អិត",
       backToProjects: "ត្រឡប់ទៅគម្រោង",
       items: [
         {
