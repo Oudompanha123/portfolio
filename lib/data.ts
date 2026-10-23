@@ -249,8 +249,9 @@ export const content: Record<Locale, Content> = {
         {
           title: "Cafe Merchant",
           slug: "cafe-merchant",
+          image: "/image/cafe-merchant-preview.png",
           description:
-            "A side project at KOSIGN — a Foodpanda-style ordering platform for café merchants, where customers browse the menu and order online while the merchant manages incoming orders and payments in real time.",
+            "A side project at KOSIGN — PPCBank Merchant, a secure merchant portal built for PPCBank's business banking clients to log in and manage their accounts.",
           stack: ["Next.js", "Spring Boot", "PostgreSQL", "TypeScript", "Tailwind CSS"],
           demoUrl: "https://cafe-merchant.kosign.dev",
           websiteUrl: "https://cafe-merchant.kosign.dev",
@@ -467,8 +468,9 @@ export const content: Record<Locale, Content> = {
         {
           title: "Cafe Merchant",
           slug: "cafe-merchant",
+          image: "/image/cafe-merchant-preview.png",
           description:
-            "គម្រោងនៅ KOSIGN — វេទិកាកម្មង់អាហារបែប Foodpanda សម្រាប់ហាងកាហ្វេ ដែលអតិថិជនអាចមើលមីនុយ និងកម្មង់តាមអនឡាញ ខណៈដែលហាងគ្រប់គ្រងការបញ្ជាទិញ និងការទូទាត់ជាក់ស្ដែង។",
+            "គម្រោងនៅ KOSIGN — PPCBank Merchant វេទិកាសម្រាប់អតិថិជនអាជីវកម្មរបស់ PPCBank ចូលប្រើប្រាស់ និងគ្រប់គ្រងគណនីរបស់ពួកគេដោយសុវត្ថិភាព។",
           stack: ["Next.js", "Spring Boot", "PostgreSQL", "TypeScript", "Tailwind CSS"],
           demoUrl: "https://cafe-merchant.kosign.dev",
           websiteUrl: "https://cafe-merchant.kosign.dev",
