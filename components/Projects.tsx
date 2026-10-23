@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useLocale } from "@/lib/i18n";
-import { GitHubIcon, GlobeIcon } from "./icons/ProjectIcons";
+import { GitHubIcon } from "./icons/ProjectIcons";
 import Reveal from "./Reveal";
 
 export default function Projects() {
@@ -49,8 +49,7 @@ export default function Projects() {
                   <h3 className="min-w-0 flex-1 truncate text-lg font-semibold tracking-tight text-ink">
                     {project.title}
                   </h3>
-                  <span className="inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-accent">
-                    <GlobeIcon />
+                  <span className="shrink-0 text-sm font-medium text-blue-600 dark:text-blue-400">
                     {t.projects.viewDetails}
                   </span>
                 </div>
