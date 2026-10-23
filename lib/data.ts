@@ -225,7 +225,7 @@ export const content: Record<Locale, Content> = {
       backToProjects: "Back to projects",
       items: [
         {
-          title: "We Invoice",
+          title: "WeInvoice",
           slug: "we-invoice",
           image: "/image/we-invoice-preview.png",
           description:
@@ -444,7 +444,7 @@ export const content: Record<Locale, Content> = {
       backToProjects: "ត្រឡប់ទៅគម្រោង",
       items: [
         {
-          title: "We Invoice",
+          title: "WeInvoice",
           slug: "we-invoice",
           image: "/image/we-invoice-preview.png",
           description:
