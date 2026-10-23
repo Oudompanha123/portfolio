@@ -31,16 +31,14 @@ export default function Projects() {
               href={`/projects/${project.slug}`}
               className="group flex h-full flex-col rounded-xl border border-border bg-surface transition-shadow duration-200 hover:shadow-lg"
             >
-              <div className="h-[220px] overflow-hidden rounded-t-xl bg-bg p-5 pb-0">
-                {project.image ? (
+              <div className="h-[220px] overflow-hidden rounded-t-xl border-b border-border bg-bg">
+                {project.image && (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="h-full w-full rounded-t-xl bg-surface object-cover object-top shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_4px_16px_rgba(0,0,0,0.06)]"
+                    className="h-full w-full object-cover object-top"
                   />
-                ) : (
-                  <div className="h-full w-full rounded-t-xl bg-surface shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_4px_16px_rgba(0,0,0,0.06)]" />
                 )}
               </div>
 
