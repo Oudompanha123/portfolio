@@ -163,8 +163,42 @@ export const content: Record<Locale, Content> = {
         {
           title: "Frontend",
           items: [
+<<<<<<< Updated upstream
             "HTML5 & CSS3",
             "JavaScript",
+=======
+            "Spring Cloud Gateway",
+            "Eureka",
+            "Load Balancing",
+            "Timeouts & Fallbacks",
+          ],
+        },
+        {
+          title: "Java & Spring Boot",
+          items: ["Java", "Spring Boot", "Spring MVC", "Spring Data JPA", "Hibernate"],
+        },
+        {
+          title: "Security",
+          items: ["Spring Security", "JWT", "OAuth2", "SSO", "RBAC"],
+        },
+        {
+          title: "Relational Databases",
+          items: ["PostgreSQL", "Oracle Database", "ERD Design", "SQL Tuning", "Data Validation"],
+        },
+        {
+          title: "Production Support & Deployment",
+          items: ["Docker", "Docker Swarm", "Jenkins", "GitLab CI/CD", "AWS", "Linux (Bash)", "Spring Boot Actuator", "Zabbix"],
+        },
+        {
+          title: "Git & Team Workflow",
+          items: ["Git", "GitHub", "GitLab", "Merge Requests", "Code Review"],
+        },
+        {
+          title: "Frontend & Prototyping",
+          items: [
+            "React",
+            "Next.js",
+>>>>>>> Stashed changes
             "TypeScript",
             "React.js",
             "Next.js",
@@ -364,8 +398,42 @@ export const content: Record<Locale, Content> = {
         {
           title: "Frontend",
           items: [
+<<<<<<< Updated upstream
             "HTML5 & CSS3",
             "JavaScript",
+=======
+            "Spring Cloud Gateway",
+            "Eureka",
+            "Load Balancing",
+            "Timeouts & Fallbacks",
+          ],
+        },
+        {
+          title: "Java & Spring Boot",
+          items: ["Java", "Spring Boot", "Spring MVC", "Spring Data JPA", "Hibernate"],
+        },
+        {
+          title: "សុវត្ថិភាព",
+          items: ["Spring Security", "JWT", "OAuth2", "SSO", "RBAC"],
+        },
+        {
+          title: "មូលដ្ឋានទិន្នន័យ Relational",
+          items: ["PostgreSQL", "Oracle Database", "ERD Design", "SQL Tuning", "Data Validation"],
+        },
+        {
+          title: "ការគាំទ្រផលិតកម្ម & ការដាក់ឱ្យប្រើប្រាស់",
+          items: ["Docker", "Docker Swarm", "Jenkins", "GitLab CI/CD", "AWS", "Linux (Bash)", "Spring Boot Actuator", "Zabbix"],
+        },
+        {
+          title: "Git & ការងារជាក្រុម",
+          items: ["Git", "GitHub", "GitLab", "Merge Requests", "Code Review"],
+        },
+        {
+          title: "ផ្នែកខាងមុខ & ការធ្វើគំរូ",
+          items: [
+            "React",
+            "Next.js",
+>>>>>>> Stashed changes
             "TypeScript",
             "React.js",
             "Next.js",
