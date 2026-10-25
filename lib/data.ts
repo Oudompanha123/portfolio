@@ -177,6 +177,8 @@ export const content: Record<Locale, Content> = {
             "Eureka",
             "Load Balancing",
             "Timeouts & Fallbacks",
+            "RabbitMQ",
+            "Redis",
           ],
         },
         {
@@ -295,8 +297,9 @@ export const content: Record<Locale, Content> = {
           points: [
             "Integrated internal services with third-party financial systems through REST and GraphQL APIs, fetching only the fields each screen needed.",
             "Built services in a Spring Cloud microservices architecture with Eureka, API Gateway routing, and OpenFeign, adding timeouts and fallbacks so one degraded service didn't stop payment or loan flows.",
+            "Used RabbitMQ for asynchronous, event-driven messaging between microservices and Redis to cache frequently read data, keeping payment and loan endpoints responsive and reducing database load.",
             "Delivered regulated fintech features: KHQR-based billing and auto-collection, digital loan origination and repayment, and GDT-integrated e-invoicing.",
-            "Secured services with Spring Security, JWT, and role-based access control, passing code reviews against Webcash Group's K-Fintech standards.",
+            "Secured services with Spring Security, JWT, SSO, and role-based access control, passing code reviews against Webcash Group's K-Fintech standards.",
             "Designed PostgreSQL schemas and ERDs, and tuned SQL so billing and settlement data stayed fast and reconciled.",
             "Deployed with Docker and GitLab CI/CD, monitored with Spring Boot Actuator and Zabbix, and traced failed transactions to resolve tickets quickly.",
             "Wrote Swagger/OpenAPI specs before development so partner teams could integrate in parallel, and tested APIs with Postman.",
@@ -396,6 +399,8 @@ export const content: Record<Locale, Content> = {
             "Eureka",
             "Load Balancing",
             "Timeouts & Fallbacks",
+            "RabbitMQ",
+            "Redis",
           ],
         },
         {
@@ -514,8 +519,9 @@ export const content: Record<Locale, Content> = {
           points: [
             "បានភ្ជាប់សេវាកម្មខាងក្នុងជាមួយប្រព័ន្ធហិរញ្ញវត្ថុភាគីទីបី តាមរយៈ REST និង GraphQL API ដោយទាញយកតែទិន្នន័យដែលអេក្រង់នីមួយៗត្រូវការ។",
             "បានបង្កើតសេវាកម្មក្នុងស្ថាបត្យកម្ម microservices ជាមួយ Spring Cloud, Eureka, API Gateway routing និង OpenFeign ព្រមទាំងបន្ថែម timeout និង fallback ដើម្បីកុំឱ្យសេវាកម្មណាមួយដែលយឺតបញ្ឈប់លំហូរការទូទាត់ ឬប្រាក់កម្ចី។",
+            "បានប្រើ RabbitMQ សម្រាប់ការផ្ញើសារ asynchronous តាមព្រឹត្តិការណ៍រវាង microservices និង Redis សម្រាប់ cache ទិន្នន័យដែលត្រូវបានអានញឹកញាប់ ដើម្បីរក្សា endpoint ការទូទាត់ និងប្រាក់កម្ចីឱ្យឆ្លើយតបលឿន និងកាត់បន្ថយបន្ទុកលើមូលដ្ឋានទិន្នន័យ។",
             "បានផ្ដល់មុខងារហិរញ្ញវត្ថុដែលគោរពច្បាប់៖ ការចេញវិក្កយបត្រ និងប្រមូលប្រាក់ដោយស្វ័យប្រវត្តិតាម KHQR ការផ្ដល់ និងសងប្រាក់កម្ចីឌីជីថល និងការចេញវិក្កយបត្រអេឡិចត្រូនិកភ្ជាប់ជាមួយ GDT។",
-            "បានធានាសុវត្ថិភាពសេវាកម្មដោយ Spring Security, JWT និងការអនុញ្ញាតតាមតួនាទី ព្រមទាំងឆ្លងកាត់ការត្រួតពិនិត្យកូដតាមស្តង់ដារ K-Fintech របស់ Webcash Group។",
+            "បានធានាសុវត្ថិភាពសេវាកម្មដោយ Spring Security, JWT, SSO និងការអនុញ្ញាតតាមតួនាទី ព្រមទាំងឆ្លងកាត់ការត្រួតពិនិត្យកូដតាមស្តង់ដារ K-Fintech របស់ Webcash Group។",
             "បានរចនា schema និង ERD សម្រាប់ PostgreSQL ព្រមទាំងកែលម្អ SQL ដើម្បីរក្សាទិន្នន័យវិក្កយបត្រ និងការទូទាត់ឱ្យលឿន និងត្រឹមត្រូវ។",
             "បានដាក់ឱ្យប្រើប្រាស់ដោយ Docker និង GitLab CI/CD តាមដានដោយ Spring Boot Actuator និង Zabbix ព្រមទាំងតាមដានប្រតិបត្តិការបរាជ័យ ដើម្បីដោះស្រាយបញ្ហាបានលឿន។",
             "បានសរសេរឯកសារ Swagger/OpenAPI មុនពេលអភិវឌ្ឍ ដើម្បីឱ្យក្រុមការងារភាគីនានាអាចភ្ជាប់ប្រព័ន្ធស្របគ្នាបាន ព្រមទាំងសាកល្បង API ដោយ Postman។",
