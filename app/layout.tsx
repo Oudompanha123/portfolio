@@ -5,10 +5,11 @@ import {
   JetBrains_Mono,
   Noto_Sans_Khmer,
 } from "next/font/google";
-import { site, content } from "@/lib/data";
-import { LocaleProvider } from "@/lib/i18n";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
+import { site } from "@/shared/config/site";
+import { content } from "@/shared/config/content";
+import { LocaleProvider } from "@/shared/lib/i18n";
+import Header from "@/widgets/Header/ui/Header";
+import Footer from "@/widgets/Footer/ui/Footer";
 import "./globals.css";
 
 const display = Space_Grotesk({
@@ -78,7 +79,7 @@ export default function RootLayout({
         className={`${display.variable} ${sans.variable} ${mono.variable} ${khmer.variable} font-sans`}
       >
         <LocaleProvider>
-          <Nav />
+          <Header />
           {children}
           <Footer />
         </LocaleProvider>

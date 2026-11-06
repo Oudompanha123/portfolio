@@ -1,8 +1,8 @@
 "use client";
 
-import { spotlight } from "@/lib/data";
-import { useLocale } from "@/lib/i18n";
-import Reveal from "./Reveal";
+import { spotlight } from "@/shared/config/site";
+import { useLocale } from "@/shared/lib/i18n";
+import Reveal from "@/shared/ui/Reveal";
 
 export default function ProjectSpotlight() {
   const { t } = useLocale();

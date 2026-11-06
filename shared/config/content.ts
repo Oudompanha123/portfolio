@@ -1,34 +1,12 @@
 /* ===========================================================================
    EDIT THIS FILE to make the portfolio yours.
    All text is bilingual: `content.en` (English) and `content.km` (Khmer).
-   Language-independent values (name, email, photo, links) live in `site`.
+   Language-independent values (name, email, photo, links) live in
+   shared/config/site.ts.
 =========================================================================== */
 
 export type Locale = "en" | "km";
 export const LOCALES: Locale[] = ["en", "km"];
-
-// Values that don't change between languages.
-export const site = {
-  name: "Chamreun Odompanha",
-  email: "oudompanha456@gmail.com",
-  photo: "/image/Chamreun%20Odompanha.png",
-  availableForWork: true,
-};
-
-// Personal side-project spotlight, shown below Featured Projects.
-export const spotlight = {
-  name: "Coc Docs Platform (CDP)",
-  siteUrl: "https://coocon.me",
-  liveUrl: "https://coocon.me/login",
-  image: "/image/cdp-preview.png",
-};
-
-// Footer / contact links. Remove any you don't use.
-export const socials: { label: string; href: string }[] = [
-  { label: "GitHub", href: "https://github.com/Oudompanha123" },
-  { label: "Telegram", href: "https://t.me/+85516334249" },
-  { label: "Email", href: "mailto:oudompanha456@gmail.com" },
-];
 
 export type SkillGroup = { title: string; items: string[] };
 export type ExperienceItem = {

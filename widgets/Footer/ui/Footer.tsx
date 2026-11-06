@@ -1,4 +1,4 @@
-import { site, socials } from "@/lib/data";
+import { site, socials } from "@/shared/config/site";
 
 export default function Footer() {
   const year = new Date().getFullYear();

@@ -1,8 +1,8 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import { site } from "@/lib/data";
-import { useLocale } from "@/lib/i18n";
+import { site } from "@/shared/config/site";
+import { useLocale } from "@/shared/lib/i18n";
 
 const container: Variants = {
   hidden: {},

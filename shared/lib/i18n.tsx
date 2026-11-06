@@ -8,7 +8,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { content, type Content, type Locale } from "./data";
+import { content, type Content, type Locale } from "@/shared/config/content";
 
 type LocaleContextValue = {
   lang: Locale;

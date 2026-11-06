@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { site } from "@/lib/data";
-import { useLocale } from "@/lib/i18n";
-import ThemeToggle from "./ThemeToggle";
-import LangToggle from "./LangToggle";
+import { site } from "@/shared/config/site";
+import { useLocale } from "@/shared/lib/i18n";
+import ThemeToggle from "@/features/theme-toggle/ui/ThemeToggle";
+import LangToggle from "@/features/locale-toggle/ui/LangToggle";
 
-export default function Nav() {
+export default function Header() {
   const { t } = useLocale();
   const [open, setOpen] = useState(false);
   const reduce = useReducedMotion();

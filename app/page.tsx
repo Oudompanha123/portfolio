@@ -1,21 +1,5 @@
-import Hero from "@/components/Hero";
-import About from "@/components/About";
-import Skills from "@/components/Skills";
-import Experience from "@/components/Experience";
-import Projects from "../components/Projects";
-import ProjectSpotlight from "@/components/ProjectSpotlight";
-import Contact from "@/components/Contact";
+import HomePage from "@/views/home/ui/HomePage";
 
 export default function Home() {
-  return (
-    <main>
-      <Hero />
-      <About />
-      <Skills />
-      <Experience />
-      <Projects />
-      <ProjectSpotlight />
-      <Contact />
-    </main>
-  );
+  return <HomePage />;
 }

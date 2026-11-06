@@ -1,8 +1,8 @@
 "use client";
 
-import { useLocale } from "@/lib/i18n";
-import SectionHeading from "./SectionHeading";
-import Reveal from "./Reveal";
+import { useLocale } from "@/shared/lib/i18n";
+import SectionHeading from "@/shared/ui/SectionHeading";
+import Reveal from "@/shared/ui/Reveal";
 
 export default function Experience() {
   const { t } = useLocale();

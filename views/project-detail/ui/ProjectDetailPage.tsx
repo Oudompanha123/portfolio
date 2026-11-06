@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useLocale } from "@/lib/i18n";
-import { GitHubIcon, ExternalLinkIcon, GlobeIcon, ArrowLeftIcon } from "./icons/ProjectIcons";
+import { useLocale } from "@/shared/lib/i18n";
+import { GitHubIcon, ExternalLinkIcon, GlobeIcon, ArrowLeftIcon } from "@/shared/ui/icons";
 
-export default function ProjectDetail({ slug }: { slug: string }) {
+export default function ProjectDetailPage({ slug }: { slug: string }) {
   const { t } = useLocale();
   const project = t.projects.items.find((p) => p.slug === slug);
 

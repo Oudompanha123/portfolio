@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { isValidEmail } from "@/lib/validation";
+import { isValidEmail } from "@/shared/lib/validation";
 
 export const runtime = "nodejs";
 
